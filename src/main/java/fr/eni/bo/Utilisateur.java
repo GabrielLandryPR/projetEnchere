@@ -1,6 +1,7 @@
 package fr.eni.bo;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Utilisateur {
 
@@ -15,7 +16,7 @@ public class Utilisateur {
 	int codePostal;
 	String ville;
 	String motDePasse;
-	float credit;
+	Integer credit;
 	boolean isAdmin;
 	
 	
@@ -42,7 +43,7 @@ public class Utilisateur {
 
 	//****Constructeurs****
 	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, int telephone,
-			String rue, int codePostal, String ville, String motDePasse, float credit, boolean isAdmin) {
+			String rue, int codePostal, String ville, String motDePasse, Integer credit, boolean isAdmin) {
 		this.noUtilisateur = noUtilisateur;
 		this.pseudo = pseudo;
 		this.nom = nom;
@@ -60,7 +61,7 @@ public class Utilisateur {
 	
 	//****Constructeur sans ID
 	public Utilisateur(String pseudo, String nom, String prenom, String email, int telephone, String rue,
-			int codePostal, String ville, String motDePasse, float credit, boolean isAdmin,
+			int codePostal, String ville, String motDePasse, Integer credit, boolean isAdmin,
 			List<ArticleVendu> articleVendus, List<Enchere> encheres) {
 		super();
 		this.pseudo = pseudo;
@@ -80,7 +81,7 @@ public class Utilisateur {
 
 	//Constructeur avec articleVendus 
 	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, int telephone,
-			String rue, int codePostal, String ville, String motDePasse, float credit, boolean isAdmin,
+			String rue, int codePostal, String ville, String motDePasse, Integer credit, boolean isAdmin,
 			List<ArticleVendu> articlesVendus) {
 		this.noUtilisateur = noUtilisateur;
 		this.pseudo = pseudo;
@@ -159,10 +160,10 @@ public class Utilisateur {
 	public void setMotDePasse(String motDePasse) {
 		this.motDePasse = motDePasse;
 	}
-	public float getCredit() {
+	public Integer getCredit() {
 		return credit;
 	}
-	public void setCredit(float credit) {
+	public void setCredit(Integer credit) {
 		this.credit = credit;
 	}
 	public boolean isAdmin() {
@@ -187,9 +188,39 @@ public class Utilisateur {
 	public void setEncheres(List<Enchere> encheres) {
 		this.encheres = encheres;
 	}
+
 	
-	
-	
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Utilisateur [getArticlesVendus()=").append(getArticlesVendus()).append(", getNoUtilisateur()=")
+				.append(getNoUtilisateur()).append(", getPseudo()=").append(getPseudo()).append(", getNom()=")
+				.append(getNom()).append(", getPrenom()=").append(getPrenom()).append(", getEmail()=")
+				.append(getEmail()).append(", getTelephone()=").append(getTelephone()).append(", getRue()=")
+				.append(getRue()).append(", getCodePostal()=").append(getCodePostal()).append(", getVille()=")
+				.append(getVille()).append(", getMotDePasse()=").append(getMotDePasse()).append(", getCredit()=")
+				.append(getCredit()).append(", isAdmin()=").append(isAdmin()).append(", getArticleVendus()=")
+				.append(getArticleVendus()).append(", getEncheres()=").append(getEncheres()).append("]");
+		return builder.toString();
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(noUtilisateur);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Utilisateur other = (Utilisateur) obj;
+		return noUtilisateur == other.noUtilisateur;
+	}
+
 	
 	
 	
