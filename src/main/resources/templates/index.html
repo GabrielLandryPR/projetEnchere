@@ -2,35 +2,84 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <title>Accueil</title>
+	<meta charset="UTF-8">
+	<title>Accueil</title>
 </head>
+
 <body>
-    <div th:replace="~{fragment/fragment-entete :: frag-entete}"></div>
-    <form action="" method="post">
-        <label for="search">Recherche d'une enchère :</label><input name="search" type="text" placeholder="search" />
-            <select class="form-select form-select-lg mb-3" aria-label="Large select example">
-        <option selected>Catégories</option>
-        <option value="1">Informatique</option>
-        <option value="2">Ameublement</option>
-        <option value="3">Vêtement</option>
-        <option value="3">Sport</option>
-        <option value="3">Loisir</option>
-    </select>
-    <button type="submit" name="btn">Rechercher</button>
-    </form>
-            <table>
-            <tbody>
-                <!-- Boucle pour afficher les articles -->
-        <!--        <tr th:each="f : ${films}">
-                    <td th:text="${f.genre.titre}"></td>
+	<div th:replace="~{fragment/fragment-entete :: frag-entete}"></div>
+	<form action="" method="post">
+		<label for="search">Recherche d'une enchère :</label><input name="search" type="text" placeholder="search" />
+		<select class="form-select form-select-lg mb-3" aria-label="Large select example">
+			<option selected>Catégories</option>
+			<option value="1">Informatique</option>
+			<option value="2">Ameublement</option>
+			<option value="3">Vêtement</option>
+			<option value="3">Sport</option>
+			<option value="3">Loisir</option>
+		</select>
+		<button type="submit" name="btn">Rechercher</button>
+	</form>
+	<div>
+		<ul>
+			<li>
+				<input type="radio" name="list1" id="list1">
+				<label for="list1">Élément 1</label>
+			</li>
+		</ul>
+		<ul>
+			<li>
+				<input type="checkbox" name="list1a" id="slist1">
+				<label for="slist1">Élément interne 1</label>
+			</li>
+			<li>
+				<input type="checkbox" name="list1b" id="slist2">
+				<label for="slist2">Élément interne 2</label>
+			</li>
+			<li>
+				<input type="checkbox" name="list1c" id="slist3">
+				<label for="slist3">Élément interne 3</label>
+			</li>
+		</ul>
+	</div>
+
+	<div>
+		<ul>
+			<li>
+				<input type="checkbox" name="list2" id="list2">
+				<label for="list2">Élément 2</label>
+			</li>
+		</ul>
+		<ul>
+			<li>
+				<input type="checkbox" name="list2a" id="slist4" >
+				<label for="slist4">Élément interne 1</label>
+			</li>
+			<li>
+				<input type="checkbox" name="list2b" id="slist2" value="slist5">
+				<label for="slist5">Élément interne 2</label>
+			</li>
+			<li>
+				<input type="checkbox" name="list2c" id="slist2" value="slist6">
+				<label for="slist6">Élément interne 3</label>
+			</li>
+		</ul>
+	</div>
+
+	<h1>Futur affichage des articles ...</h1>
+	<div>
+		<table>
+			<tbody>
+				<!-- Boucle pour afficher toutes les enchères -->
+				<!--        <tr th:each="e : ${encheres}">
+                    <td th:text="${e.genre.titre}"></td>
                     <td th:text="${f.annee}"></td>
                     <td th:text="${f.titre}"></td>
                     <td th:text="${f.realisateur.prenom + ' ' + f.realisateur.nom}"></td>
-                    <td><a th:href="@{/films/detail(id=${f.id})}">Détail</a><span> </span><a th:href="@{/film/avis(id=${f.id})}">Ajouter un avis</a></td>
                 </tr>
             </tbody>
         </table> -->
-    
+	</div>
 </body>
+
 </html>
