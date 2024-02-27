@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Accueil</title>
+</head>
+<body>
+    <div th:replace="~{fragment/fragment-entete :: frag-entete}"></div>
+    <form action="" method="post">
+        <label for="search">Recherche d'une enchère :</label><input name="search" type="text" placeholder="search" />
+            <select class="form-select form-select-lg mb-3" aria-label="Large select example">
+        <option selected>Catégories</option>
+        <option value="1">Informatique</option>
+        <option value="2">Ameublement</option>
+        <option value="3">Vêtement</option>
+        <option value="3">Sport</option>
+        <option value="3">Loisir</option>
+    </select>
+    <button type="submit" name="btn">Rechercher</button>
+    </form>
+            <table>
+            <tbody>
+                <!-- Boucle pour afficher les articles -->
+        <!--        <tr th:each="f : ${films}">
+                    <td th:text="${f.genre.titre}"></td>
+                    <td th:text="${f.annee}"></td>
+                    <td th:text="${f.titre}"></td>
+                    <td th:text="${f.realisateur.prenom + ' ' + f.realisateur.nom}"></td>
+                    <td><a th:href="@{/films/detail(id=${f.id})}">Détail</a><span> </span><a th:href="@{/film/avis(id=${f.id})}">Ajouter un avis</a></td>
+                </tr>
+            </tbody>
+        </table> -->
+    
+</body>
+</html>
