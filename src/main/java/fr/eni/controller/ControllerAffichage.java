@@ -8,7 +8,7 @@ public class ControllerAffichage {
 
 	@GetMapping("/formLog")
 	public String affichageIndex() {
-		return "/formLog";
+		return "formLog";
 	}
 	
 	@GetMapping("/monProfil")
