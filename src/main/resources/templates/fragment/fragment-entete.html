@@ -5,14 +5,22 @@
 	</h1>
 	<nav>
 		<ul>
-			<li><a href="/login">S'inscrire</a></li>
-			<li><a href="/login">Se connecter</a></li>
-			<li><a href="/logout">Se deconnecter</a></li>
-			<li><a th:href="@{/monProfil}">Mon Profil</a></li>
-			<li><a href="/newSell">Nouvelle vente</a></li>
-			<li><a href="/remporterVente">Vente remporter</a></li>
-			<li><a href="/detailsVente">Detaille vente</a></li>
+			<div sec:authorize="!isAuthenticated()">
+				<li><a href="/login">S'inscrire</a></li>
+				<li><a href="/login">Se connecter</a></li>
+			</div>
+			<div sec:authorize="isAuthenticated()">
+				<li>
+					<form th:action="@{/logout}" method="post" name="logoutForm">
+						<input type="submit" href="/logout" value="Se deconnecter"></input>
+					</form>
+				</li>
+
+				<li><a th:href="@{/monProfil}">Mon Profil</a></li>
+				<li><a href="/newSell">Nouvelle vente</a></li>
+				<li><a href="/remporterVente">Vente remporter</a></li>
+				<li><a href="/detailsVente">Détails ventes</a></li>
+			</div>
 		</ul>
 	</nav>
-	<h1 style="text-align: center;">Liste des enchères</h1>
 </header>

@@ -30,6 +30,7 @@ public class WebSecurityConfig {
 				.logout( logout->{
 					logout.logoutUrl("/logout");
 					logout.logoutSuccessUrl("/");
+					logout.deleteCookies("JSESSIONID"); 
 				})
 				.build()
 				;

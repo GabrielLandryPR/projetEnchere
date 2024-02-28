@@ -11,8 +11,6 @@ public class ControllerAffichage {
 		return "formLog";
 	}
 	
-	
-	
 	@GetMapping("/newSell")
 	public String affichageNewSell() {
 		return "newSell";
@@ -27,4 +25,5 @@ public class ControllerAffichage {
 	public String affichageremporterVente() {
 		return "remporterVente";
 	}
+	
 }
