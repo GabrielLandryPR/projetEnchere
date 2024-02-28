@@ -24,7 +24,7 @@ public class WebSecurityConfig {
 				.authorizeHttpRequests(
 					auth->{
 						auth.requestMatchers("/formLog").authenticated();
-						auth.requestMatchers("/mon-profil").authenticated();
+						auth.requestMatchers("/monProfil").authenticated();
 						auth.anyRequest().permitAll();
 					})
 				.formLogin( login->{
