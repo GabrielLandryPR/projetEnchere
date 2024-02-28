@@ -1,10 +1,20 @@
 package fr.eni.bo;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-public class Utilisateur {
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
+public class Utilisateur implements UserDetails {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8337029451390245757L;
 	//****Variables	
 	int noUtilisateur;
 	String pseudo;
@@ -24,6 +34,11 @@ public class Utilisateur {
 	List<ArticleVendu> articleVendus;
 	List<Enchere> encheres;
 	
+	@Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        // Vous pouvez ajuster les rôles/autorités selon vos besoins
+        return Collections.singleton(new SimpleGrantedAuthority("ROLE_USER"));
+    }
 
 	// Constructeurs, getters et setters
 	    
@@ -219,6 +234,40 @@ public class Utilisateur {
 			return false;
 		Utilisateur other = (Utilisateur) obj;
 		return noUtilisateur == other.noUtilisateur;
+	}
+
+	@Override
+	public String getPassword() {
+		return getMotDePasse();
+	}
+
+	@Override
+	public String getUsername() {
+		return getPseudo();
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	
