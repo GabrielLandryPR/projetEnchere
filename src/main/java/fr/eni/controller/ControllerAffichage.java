@@ -11,10 +11,6 @@ public class ControllerAffichage {
 		return "formLog";
 	}
 	
-	@GetMapping("/monProfil")
-	public String affichageMonProfil() {
-		return "monProfil";
-	}
 	
 	@GetMapping("/newSell")
 	public String affichageNewSell() {
