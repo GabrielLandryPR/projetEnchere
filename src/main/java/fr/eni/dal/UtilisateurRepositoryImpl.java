@@ -23,7 +23,7 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
 		this.jdbcTemplate = jdbcTemplate;
 		this.namedJdbcTemplate = namedJdbcTemplate;
 	}
-	
+
 	@Override
 	public List<Utilisateur> findAllUsers() {
 		String sql = "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur FROM UTILISATEURS";
@@ -119,5 +119,6 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
 		return optUser;
 		
 	}
+	
 
 }

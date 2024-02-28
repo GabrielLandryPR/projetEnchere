@@ -25,7 +25,7 @@ public class WebSecurityConfig {
 				.formLogin( login->{
 					login.loginPage("/login");
 					login.failureUrl("/login-error");
-					login.defaultSuccessUrl("/");
+					login.defaultSuccessUrl("/mon-compte");
 				})
 				.logout( logout->{
 					logout.logoutUrl("/logout");

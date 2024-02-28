@@ -34,20 +34,19 @@ public class UtilisateurServiceImpl implements UtilisateurService{
 		return user;
 	}
 	
-//	private UtilisateurRepository utilisateurRepository;
-//	
-//	
-//	@Autowired
-//	public UtilisateurServiceImpl(UtilisateurRepository utilisateurRepository) {
-//		this.utilisateurRepository = utilisateurRepository;
-//	}
-//
-//
-//
-//	public Optional<Utilisateur> consulterUserId(int id) {
-//		Optional<Utilisateur> optUser = this.utilisateurRepository.findUserById(id); 
-//		System.out.println(optUser);
-//		return optUser;
-//		
-//	}
+	
+	
+	@Autowired
+	public UtilisateurServiceImpl(UtilisateurRepository utilisateurRepository) {
+		this.utilisateurRepository = utilisateurRepository;
+	}
+
+
+
+	public Optional<Utilisateur> consulterUserId(int id) {
+		Optional<Utilisateur> optUser = this.utilisateurRepository.findUserById(id); 
+		System.out.println(optUser);
+		return optUser;
+		
+	}
 }

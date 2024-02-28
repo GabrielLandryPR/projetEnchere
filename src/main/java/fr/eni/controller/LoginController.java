@@ -40,7 +40,7 @@ public class LoginController {
 	    String username = principal.getName();
 	    
 	    // Utiliser le service utilisateur pour récupérer l'utilisateur par son nom d'utilisateur
-	    Optional<Utilisateur> utilisateur = utilisateurServiceImpl.consulterUserId(username);
+	    Optional<Utilisateur> utilisateur = utilisateurServiceImpl.loadUserByUsername(username);
 	    
 	    // Vérifier si l'utilisateur existe
 	    if (utilisateur.isPresent()) {
