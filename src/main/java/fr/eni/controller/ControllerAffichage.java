@@ -6,11 +6,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ControllerAffichage {
 
-	@GetMapping("/formLog")
-	public String affichageIndex() {
-		return "/formLog";
-	}
-	
 	@GetMapping("/monProfil")
 	public String affichageMonProfil() {
 		return "monProfil";
@@ -30,4 +25,5 @@ public class ControllerAffichage {
 	public String affichageremporterVente() {
 		return "remporterVente";
 	}
+	
 }
