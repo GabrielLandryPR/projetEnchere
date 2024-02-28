@@ -1,28 +1,32 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
-<title>Mon profil</title>
-<link rel="stylesheet" type="text/css" href="/CSS/monProfil.css">
+	<meta charset="UTF-8">
+	<title>Mon profil</title>
+	<link rel="stylesheet" type="text/css" href="/CSS/monProfil.css">
 </head>
+
 <body>
 	<div th:replace="~{fragment/fragment-entete :: frag-entete}"></div>
-    <div class="container">
-        <div class="column">
-			
-            <input type="text" value="mettre" />
-            <input type="text" value="valeur"/>
-            <input type="text" value="de"/>
-            <input type="text" value="l'utilisateur"/>
-            <button class="create-button">Créer</button>
-        </div>
-        <div class="column">
-            <input type="text" value="actuel"/>
-            <input type="text" value="avec"/>
-            <input type="text" value="thymeleaf"/>
-            <input type="text" />
-            <button class="modify-button">Modifier</button>
-        </div>
-    </div>
+	<div class="container">
+		<div class="column">
+			<p>Nom: <span th:text="${nom}"></span></p>
+			<p>Prénom: <span th:text="${prenom}"></span></p>
+			<input type="text" value="mettre" />
+			<input type="text" value="valeur" />
+			<input type="text" value="de" />
+			<input type="text" value="l'utilisateur" />
+			<button class="create-button">Créer</button>
+		</div>
+		<div class="column">
+			<input type="text" value="actuel" />
+			<input type="text" value="avec" />
+			<input type="text" value="thymeleaf" />
+			<input type="text" />
+			<button class="modify-button">Modifier</button>
+		</div>
+	</div>
 </body>
+
 </html>

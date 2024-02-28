@@ -10,7 +10,7 @@ public class ControllerAffichage {
 	public String affichageIndex() {
 		return "formLog";
 	}
-	
+
 	@GetMapping("/newSell")
 	public String affichageNewSell() {
 		return "newSell";

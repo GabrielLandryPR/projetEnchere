@@ -20,25 +20,17 @@ public class EnchereUserDetailService implements UserDetailsService{
 	}
 	
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		
-		Optional<Utilisateur> optMembre = utilisateurRepository.findByPseudo(username);
+	    Optional<Utilisateur> optMembre = utilisateurRepository.findByPseudo(username);
 
-		if(optMembre.isEmpty()) {
-			throw new UsernameNotFoundException("utilisateur non trouve : "+username);
-		}
+	    if (optMembre.isEmpty()) {
+	        throw new UsernameNotFoundException("Utilisateur non trouvé : " + username);
+	    }
 
-		Utilisateur utilisateur = optMembre.get();
-		
-		 UserBuilder userBuilder = User.withUsername(utilisateur.getPseudo())
-            .password(utilisateur.getMotDePasse());
-//            .roles("MEMBRE");
-		 
-//		 if(utilisateur.isAdmin()) {
-//			 userBuilder.roles("ADMINISTRATEUR");
-//		 }	
-		 UserDetails user = userBuilder.build();
-		 
-		
-		return user;
+	    Utilisateur utilisateur = optMembre.get();
+
+	    return User.withUsername(utilisateur.getPseudo())
+	            .password(utilisateur.getMotDePasse())
+	            .roles("MEMBRE")
+	            .build();
 	}
 }
