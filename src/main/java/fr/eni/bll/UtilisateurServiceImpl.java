@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 import fr.eni.bo.Utilisateur;
 import fr.eni.dal.UtilisateurRepository;
 
+import fr.eni.bo.Utilisateur;
+import fr.eni.dal.UtilisateurRepository;
+
 @Service
 public class UtilisateurServiceImpl implements UtilisateurService{
 
@@ -31,4 +34,19 @@ public class UtilisateurServiceImpl implements UtilisateurService{
 		return user;
 	}
 	
+	
+	
+	@Autowired
+	public UtilisateurServiceImpl(UtilisateurRepository utilisateurRepository) {
+		this.utilisateurRepository = utilisateurRepository;
+	}
+
+
+
+	public Optional<Utilisateur> consulterUserId(int id) {
+		Optional<Utilisateur> optUser = this.utilisateurRepository.findUserById(id); 
+		System.out.println(optUser);
+		return optUser;
+		
+	}
 }

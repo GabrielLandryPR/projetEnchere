@@ -23,7 +23,7 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
 		this.jdbcTemplate = jdbcTemplate;
 		this.namedJdbcTemplate = namedJdbcTemplate;
 	}
-	
+
 	@Override
 	public List<Utilisateur> findAllUsers() {
 		String sql = "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur FROM UTILISATEURS";
@@ -51,7 +51,7 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
 	
 	@Override
 	public Optional<Utilisateur> findUserById(int id){
-		String sql = "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur FROM UTILISATEURS WHERE no_utilisateur = ?";
+		String sql = "SELECT * FROM UTILISATEURS WHERE no_utilisateur = ?";
 		RowMapper<Utilisateur> rowMapper = new RowMapper<>() {
 
 			@Override
@@ -76,6 +76,7 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
 		Optional<Utilisateur> optUser = null;
 		try{
 			Utilisateur utilisateur = jdbcTemplate.queryForObject(sql, rowMapper, id);
+			System.err.println(utilisateur);
 			optUser = Optional.of(utilisateur);
 		}catch(EmptyResultDataAccessException exc) {
 			optUser = Optional.empty();
@@ -118,5 +119,6 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
 		return optUser;
 		
 	}
+	
 
 }

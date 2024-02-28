@@ -7,7 +7,9 @@
 </head>
 
 <body>
-	<div th:replace="~{fragment/fragment-entete :: frag-entete}"></div>
+	<h1 sec:authentication="name"></h1>
+	<div th:replace="~{fragment/fragment-entete :: frag-entete}">
+	</div>
 	<form action="" method="post">
 		<label for="search">Recherche d'une enchère :</label><input name="search" type="text" placeholder="search" />
 		<select class="form-select form-select-lg mb-3" aria-label="Large select example">
