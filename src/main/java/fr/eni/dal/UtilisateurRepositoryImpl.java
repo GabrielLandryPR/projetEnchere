@@ -23,7 +23,7 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
 		this.jdbcTemplate = jdbcTemplate;
 		this.namedJdbcTemplate = namedJdbcTemplate;
 	}
-
+	
 	@Override
 	public List<Utilisateur> findAllUsers() {
 		String sql = "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur FROM UTILISATEURS";
@@ -76,6 +76,41 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
 		Optional<Utilisateur> optUser = null;
 		try{
 			Utilisateur utilisateur = jdbcTemplate.queryForObject(sql, rowMapper, id);
+			optUser = Optional.of(utilisateur);
+		}catch(EmptyResultDataAccessException exc) {
+			optUser = Optional.empty();
+		}
+		return optUser;
+		
+	}
+
+	@Override
+	public Optional<Utilisateur> findByPseudo(String username) {
+		String sql = "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur FROM UTILISATEURS WHERE pseudo = ?";
+		RowMapper<Utilisateur> rowMapper = new RowMapper<>() {
+
+			@Override
+			public Utilisateur mapRow(ResultSet rs, int rowNum) throws SQLException {
+				Utilisateur utilisateur = new Utilisateur();
+				utilisateur.setNoUtilisateur(rs.getInt("no_utilisateur"));
+				utilisateur.setPseudo(rs.getString("pseudo"));
+				utilisateur.setNom(rs.getString("nom"));
+				utilisateur.setPrenom(rs.getString("prenom"));
+				utilisateur.setEmail(rs.getString("email"));
+				utilisateur.setTelephone(rs.getInt("telephone"));
+				utilisateur.setRue(rs.getString("rue"));
+				utilisateur.setCodePostal(rs.getInt("code_postal"));
+				utilisateur.setVille(rs.getString("ville"));
+				utilisateur.setMotDePasse(rs.getString("mot_de_passe"));
+				utilisateur.setCredit(rs.getInt("credit"));
+				utilisateur.setAdmin(rs.getBoolean("administrateur"));
+				return utilisateur;
+			}
+
+		};
+		Optional<Utilisateur> optUser = null;
+		try{
+			Utilisateur utilisateur = jdbcTemplate.queryForObject(sql, rowMapper, username);
 			optUser = Optional.of(utilisateur);
 		}catch(EmptyResultDataAccessException exc) {
 			optUser = Optional.empty();

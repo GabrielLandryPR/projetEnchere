@@ -10,5 +10,7 @@ public interface UtilisateurRepository {
 	List<Utilisateur> findAllUsers();
 
 	Optional<Utilisateur> findUserById(int id);
+
+	Optional<Utilisateur> findByPseudo(String username);
 	
 }
