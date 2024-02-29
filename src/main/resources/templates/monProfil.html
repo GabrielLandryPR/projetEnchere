@@ -10,17 +10,18 @@
     <div class="container">
         <div class="column">
 			
-            <input type="text" value="mettre" />
-            <input type="text" value="valeur"/>
-            <input type="text" value="de"/>
-            <input type="text" value="l'utilisateur"/>
+            <input type="text" th:value="${user.pseudo}" />
+            <input type="text" th:value="${user.nom}" />
+            <input type="text" th:value="${user.prenom}" />
+            <input type="text" th:value="${user.email}" />
             <button class="create-button">Créer</button>
         </div>
         <div class="column">
-            <input type="text" value="actuel"/>
-            <input type="text" value="avec"/>
-            <input type="text" value="thymeleaf"/>
-            <input type="text" />
+            <!-- Vous pouvez laisser ces champs vides pour les données que vous ne voulez pas afficher -->
+            <input type="text" th:value="${user.telephone}" />
+            <input type="text" th:value="${user.rue}" />
+            <input type="text" th:value="${user.codePostal}" />
+            <input type="text" th:value="${user.ville}" />
             <button class="modify-button">Modifier</button>
         </div>
     </div>
