@@ -24,12 +24,13 @@ public class WebSecurityConfig {
 					})
 				.formLogin( login->{
 					login.loginPage("/login");
-					login.failureUrl("/login-error");
+					login.failureUrl("/login?error=true");
 					login.defaultSuccessUrl("/monProfil");
+					
 				})
 				.logout( logout->{
 					logout.logoutUrl("/logout");
-					logout.logoutSuccessUrl("/");
+					logout.logoutSuccessUrl("/?logout=true");
 					logout.deleteCookies("JSESSIONID"); 
 				})
 				.csrf().disable() 

@@ -1,21 +1,44 @@
 package fr.eni.controller;
 
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import fr.eni.bll.UtilisateurServiceImpl;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import fr.eni.bll.UtilisateurService;
+import fr.eni.bo.Utilisateur;
+import fr.eni.securingWeb.EnchereUserDetailService;
 @Controller
 public class LoginController {
 	
-	private UtilisateurServiceImpl utilisateurServiceImpl;
+	private UtilisateurService utilisateurService;
+	private EnchereUserDetailService enchereUserDetailService;
 	
-	public LoginController(UtilisateurServiceImpl utilisateurServiceImpl) {
-		this.utilisateurServiceImpl = utilisateurServiceImpl;
+	
+
+	public LoginController(UtilisateurService utilisateurService,EnchereUserDetailService enchereUserDetailService) {
+		this.utilisateurService = utilisateurService;
+		this.enchereUserDetailService = enchereUserDetailService;
 	}
 
 	@GetMapping("/login")
 	public String login() {
-		return "login";
+			return "login";
+	}
+	
+	@PostMapping("/login")
+	public String login(UserDetails utilisateur) throws UsernameNotFoundException {
+		UserDetails user = this.enchereUserDetailService.loadUserByUsername(utilisateur.getUsername());
+		user.getUsername();
+		user.getPassword();
+		if(user.getUsername().isEmpty()) {
+			return"login";
+		}
+			return "index";
+			
 	}
 	
 	@PostMapping("/logout")

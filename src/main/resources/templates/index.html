@@ -9,6 +9,9 @@
 <body>
 
 	<div th:replace="~{fragment/fragment-entete :: frag-entete}"></div>
+	        <div th:if="${param.logout}">
+            Vous êtes déconnecté.
+        </div>
 	<h1 style="text-align: center;">Liste des enchères</h1>
 	<form action="" method="post">
 		<label for="search">Recherche d'une enchère :</label><input name="search" type="text" placeholder="search" />
