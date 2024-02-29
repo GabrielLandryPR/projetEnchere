@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	<div th:replace="~{fragment/fragment-entete :: frag-entete}"></div>
+	<form action="createUser" method="post" th:object="${utilisateur}">
+		<div class="container">
+			<div class="column">
+				<label for="pseudo">Pseudo<input type="text" th:field="*{pseudo}" /></label>
+				<label for="prénom">Prénom<input type="text" th:field="*{prenom}" /></label>
+				<label for="telèphone">Telèphone<input type="text" th:field="*{telephone}" /></label>
+				<label for="codePostal">Code Postal<input type="text" th:field="*{codePostal}" /></label>
+				<label for="motDePasse">Mot de passe<input type="text" th:field="*{motDePasse}" /></label>
+				<button class="create-button" type="submit">Créer</button>
+			</div>
+			<div class="column">
+
+				<label for="nom">Nom<input type="text" value="mettre" th:field="*{nom}" /></label>
+				<label for="email">Email<input type="text" value="mettre" th:field="*{email}"/></label>
+				<label for="rue">Rue<input type="text" value="mettre" th:field="*{rue}"/></label>
+				<label for="ville">Ville<input type="text" value="mettre" th:field="*{ville}"/></label>
+				<label for="confirmation">Confirmation<input type="text"/></label>
+				<button class="modify-button" type="submit">Modifier</button>
+			</div>
+		</div>
+	</form>
+</body>
+</html>

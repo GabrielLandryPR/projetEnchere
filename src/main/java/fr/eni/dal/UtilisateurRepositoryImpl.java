@@ -137,7 +137,7 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
 					parameterSource.addValue("code_postal", utilisateur.getCodePostal());
 					parameterSource.addValue("ville", utilisateur.getVille());
 					parameterSource.addValue("mot_de_passe", utilisateur.getMotDePasse());
-					parameterSource.addValue("credit", utilisateur.getCredit());
+					parameterSource.addValue("credit", 54540);
 					parameterSource.addValue("administrateur", utilisateur.isAdmin());
 				KeyHolder keyHolder = new GeneratedKeyHolder();
 

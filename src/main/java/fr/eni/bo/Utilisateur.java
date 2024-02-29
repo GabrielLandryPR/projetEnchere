@@ -26,7 +26,7 @@ public class Utilisateur implements UserDetails {
 	int codePostal;
 	String ville;
 	String motDePasse;
-	Integer credit;
+	Integer credit=0 ;
 	boolean isAdmin;
 	
 	
@@ -74,51 +74,51 @@ public class Utilisateur implements UserDetails {
 	}
 	
 	
-	//****Constructeur sans ID
-	public Utilisateur(String pseudo, String nom, String prenom, String email, int telephone, String rue,
-			int codePostal, String ville, String motDePasse, Integer credit, boolean isAdmin,
-			List<ArticleVendu> articleVendus, List<Enchere> encheres) {
-		super();
-		this.pseudo = pseudo;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.email = email;
-		this.telephone = telephone;
-		this.rue = rue;
-		this.codePostal = codePostal;
-		this.ville = ville;
-		this.motDePasse = motDePasse;
-		this.credit = credit;
-		this.isAdmin = isAdmin;
-		this.articleVendus = articleVendus;
-		this.encheres = encheres;
-	}
+//	//****Constructeur sans ID
+//	public Utilisateur(String pseudo, String nom, String prenom, String email, int telephone, String rue,
+//			int codePostal, String ville, String motDePasse, Integer credit, boolean isAdmin,
+//			List<ArticleVendu> articleVendus, List<Enchere> encheres) {
+//		super();
+//		this.pseudo = pseudo;
+//		this.nom = nom;
+//		this.prenom = prenom;
+//		this.email = email;
+//		this.telephone = telephone;
+//		this.rue = rue;
+//		this.codePostal = codePostal;
+//		this.ville = ville;
+//		this.motDePasse = motDePasse;
+//		this.credit = credit;
+//		this.isAdmin = isAdmin;
+//		this.articleVendus = articleVendus;
+//		this.encheres = encheres;
+//	}
 
-	//Constructeur avec articleVendus 
-	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, int telephone,
-			String rue, int codePostal, String ville, String motDePasse, Integer credit, boolean isAdmin,
-			List<ArticleVendu> articlesVendus) {
-		this.noUtilisateur = noUtilisateur;
-		this.pseudo = pseudo;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.email = email;
-		this.telephone = telephone;
-		this.rue = rue;
-		this.codePostal = codePostal;
-		this.ville = ville;
-		this.motDePasse = motDePasse;
-		this.credit = credit;
-		this.isAdmin = isAdmin;
-		this.articleVendus = articlesVendus;
-	}
+//	//Constructeur avec articleVendus 
+//	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, int telephone,
+//			String rue, int codePostal, String ville, String motDePasse, Integer credit, boolean isAdmin,
+//			List<ArticleVendu> articlesVendus) {
+//		this.noUtilisateur = noUtilisateur;
+//		this.pseudo = pseudo;
+//		this.nom = nom;
+//		this.prenom = prenom;
+//		this.email = email;
+//		this.telephone = telephone;
+//		this.rue = rue;
+//		this.codePostal = codePostal;
+//		this.ville = ville;
+//		this.motDePasse = motDePasse;
+//		this.credit = credit;
+//		this.isAdmin = isAdmin;
+//		this.articleVendus = articlesVendus;
+//	}
 	
 	
 	/*
 	 * Constructeur pour insert bdd
 	 */
 	public Utilisateur(String pseudo, String nom, String prenom, String email, int telephone, String rue,
-			int codePostal, String ville, String motDePasse, Integer credit, boolean isAdmin) {
+			int codePostal, String ville, String motDePasse, boolean isAdmin) {
 		super();
 		this.pseudo = pseudo;
 		this.nom = nom;
@@ -129,8 +129,8 @@ public class Utilisateur implements UserDetails {
 		this.codePostal = codePostal;
 		this.ville = ville;
 		this.motDePasse = motDePasse;
-		this.credit = credit;
 		this.isAdmin = isAdmin;
+		System.out.println("##############");
 	}
 
 	//****Getters et setters****

@@ -37,6 +37,9 @@ public class UtilisateurServiceImpl implements UtilisateurService{
 		Optional<Utilisateur> optUser = this.utilisateurRepository.findUserById(id); 
 		System.out.println(optUser);
 		return optUser;
-		
+	}
+	
+	public void saveUser(Utilisateur utilisateur) {
+		this.utilisateurRepository.saveUser(utilisateur);
 	}
 }

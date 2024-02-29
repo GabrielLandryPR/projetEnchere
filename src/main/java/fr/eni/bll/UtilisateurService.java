@@ -7,5 +7,7 @@ import fr.eni.bo.Utilisateur;
 public interface UtilisateurService {
 
 	Optional<Utilisateur> loadUserByUsername(String username) throws UsernameNotFoundException;
+	
+	public void saveUser(Utilisateur utilisateur);
 
 }

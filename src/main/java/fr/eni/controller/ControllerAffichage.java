@@ -25,5 +25,4 @@ public class ControllerAffichage {
 	public String affichageremporterVente() {
 		return "remporterVente";
 	}
-	
 }

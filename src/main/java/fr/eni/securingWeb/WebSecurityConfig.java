@@ -32,8 +32,9 @@ public class WebSecurityConfig {
 					logout.logoutSuccessUrl("/");
 					logout.deleteCookies("JSESSIONID"); 
 				})
-				.build()
-				;
+				.csrf().disable() 
+                .build();
+				
 		
 	}
 	@Bean
