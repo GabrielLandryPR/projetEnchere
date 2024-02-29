@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import fr.eni.bll.UtilisateurService;
 import fr.eni.bo.Utilisateur;
 import fr.eni.securingWeb.EnchereUserDetailService;
+import jakarta.validation.Valid;
 @Controller
 public class LoginController {
 	
@@ -30,7 +31,7 @@ public class LoginController {
 	}
 	
 	@PostMapping("/login")
-	public String login(UserDetails utilisateur) throws UsernameNotFoundException {
+	public String login(@Valid UserDetails utilisateur) throws UsernameNotFoundException {
 		UserDetails user = this.enchereUserDetailService.loadUserByUsername(utilisateur.getUsername());
 		if(user.getUsername().isEmpty()) {
 			return"login";

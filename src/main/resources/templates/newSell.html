@@ -4,12 +4,12 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Nouvelle vente</title>
-	<link rel="stylesheet" type="text/css" href="/CSS/newSell.css">
+	<!--<link rel="stylesheet" type="text/css" href="/CSS/newSell.css"> -->
 </head>
 
 <body>
+	<div th:replace="~{fragment/fragment-entete :: frag-entete}"></div>
 	<form action="">
-		<div th:replace="~{fragment/fragment-entete :: frag-entete}"></div>
 		<label for="">Article: <input type="text" /></label>
 		<label for="">Description: <input type="text" /></label>
 		<label for="">Catégorie: <input type="text" /></label>

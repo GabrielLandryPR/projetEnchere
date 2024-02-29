@@ -9,6 +9,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -28,7 +29,7 @@ public class Utilisateur implements UserDetails {
 	String nom;
 	String prenom;
 	@NotBlank
-	@Size(min=1)
+	@Email
 	String email;
 	int telephone;
 	String rue;
