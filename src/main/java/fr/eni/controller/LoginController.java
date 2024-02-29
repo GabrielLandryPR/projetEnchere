@@ -22,5 +22,23 @@ public class LoginController {
 	public String logout() {
 		return "redirect:/";
 	}
+		
+		
+//	@GetMapping("/monProfil")
+//	public String afficherMonProfil(Model model, Principal principal) {
+//		 String username = principal.getName(); // Obtenez le nom d'utilisateur de l'authentification principale
+//		    Optional<Utilisateur> utilisateur = utilisateurServiceImpl.loadUserByUsername(username);
+//		    // Ajouter l'utilisateur au modèle
+//		    model.addAttribute("user", utilisateur);
+//		    
+//		    return "monProfil";
+//	}
 	
+	
+//	@PostMapping("/monProfil")
+//	public String formulaireMonProfil(@ModelAttribute("utilisateur")Utilisateur utilisateur) {
+//		
+//		return "monProfil";
+//	}
+		
 }

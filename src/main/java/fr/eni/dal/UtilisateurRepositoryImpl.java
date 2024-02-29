@@ -8,10 +8,14 @@ import java.util.Optional;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import fr.eni.bo.Utilisateur;
+
 
 @Repository
 public class UtilisateurRepositoryImpl implements UtilisateurRepository {
@@ -48,9 +52,9 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
 		};
 		return jdbcTemplate.query(sql, rowMapper);
 	}
-	
+
 	@Override
-	public Optional<Utilisateur> findUserById(int id){
+	public Optional<Utilisateur> findUserById(int id) {
 		String sql = "SELECT * FROM UTILISATEURS WHERE no_utilisateur = ?";
 		RowMapper<Utilisateur> rowMapper = new RowMapper<>() {
 
@@ -71,18 +75,18 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
 				utilisateur.setAdmin(rs.getBoolean("administrateur"));
 				return utilisateur;
 			}
-			
+
 		};
 		Optional<Utilisateur> optUser = null;
-		try{
+		try {
 			Utilisateur utilisateur = jdbcTemplate.queryForObject(sql, rowMapper, id);
 			System.err.println(utilisateur);
 			optUser = Optional.of(utilisateur);
-		}catch(EmptyResultDataAccessException exc) {
+		} catch (EmptyResultDataAccessException exc) {
 			optUser = Optional.empty();
 		}
 		return optUser;
-		
+
 	}
 
 	@Override
@@ -110,15 +114,44 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
 
 		};
 		Optional<Utilisateur> optUser = null;
-		try{
+		try {
 			Utilisateur utilisateur = jdbcTemplate.queryForObject(sql, rowMapper, username);
 			optUser = Optional.of(utilisateur);
-		}catch(EmptyResultDataAccessException exc) {
+		} catch (EmptyResultDataAccessException exc) {
 			optUser = Optional.empty();
 		}
 		return optUser;
+
+	}
+
+	public Optional<Utilisateur> saveUser(Utilisateur utilisateur){
+		if(utilisateur.getNoUtilisateur()== 0) {
+			String sql = "insert into UTILISATEURS(pseudo,nom,prenom,email,telephone,rue,code_postal,ville,mot_de_passe,credit,administrateur) values(:pseudo, :nom, :prenom, :email, :telephone, :rue, :code_postal, :ville, :mot_de_passe, :credit, :administrateur)";
+					MapSqlParameterSource parameterSource = new MapSqlParameterSource();
+					parameterSource.addValue("pseudo", utilisateur.getPseudo());	
+					parameterSource.addValue("nom", utilisateur.getNom());
+					parameterSource.addValue("prenom", utilisateur.getPrenom());
+					parameterSource.addValue("email", utilisateur.getEmail());
+					parameterSource.addValue("telephone", utilisateur.getTelephone());
+					parameterSource.addValue("rue", utilisateur.getRue());
+					parameterSource.addValue("code_postal", utilisateur.getCodePostal());
+					parameterSource.addValue("ville", utilisateur.getVille());
+					parameterSource.addValue("mot_de_passe", utilisateur.getMotDePasse());
+					parameterSource.addValue("credit", utilisateur.getCredit());
+					parameterSource.addValue("administrateur", utilisateur.isAdmin());
+				KeyHolder keyHolder = new GeneratedKeyHolder();
+
+				namedJdbcTemplate.update(sql, parameterSource, keyHolder, 
+						new String[] {"noUtilisateur"});
+				utilisateur.setNoUtilisateur(keyHolder.getKey().intValue());
+		}else {
+			String sql = "update UTILISATEURS set pseudo=?,nom=?,prenom=?,email=?,telephone=?, rue=?,code_postal=?, ville=?, mot_de_passe=?,credit=?,administrateur=? where no_utilisateur=?";
+			int nbLignes = jdbcTemplate.update(sql, utilisateur.getPseudo(), utilisateur.getNom(), utilisateur.getPrenom(), utilisateur.getEmail(), utilisateur.getTelephone(), utilisateur.getRue(), utilisateur.getCodePostal(), utilisateur.getVille(), utilisateur.getMotDePasse(), utilisateur.getCredit(), utilisateur.isAdmin(), utilisateur.getNoUtilisateur());
+
+			
+		}
+		return Optional.of(utilisateur);
 		
 	}
-	
 
 }
