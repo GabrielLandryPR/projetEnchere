@@ -11,5 +11,9 @@ public interface UtilisateurService {
 	public void saveUser(Utilisateur utilisateur);
 	
 	Optional<Utilisateur> findUserByEmail(String email);
+	
+	// DELETE
+	
+	// REMONTER CRUD REPOSITORY VERS SERVICE
 
 }
