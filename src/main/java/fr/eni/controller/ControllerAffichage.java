@@ -5,12 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class ControllerAffichage {
-
-	@GetMapping("/formLog")
-	public String affichageIndex() {
-		return "formLog";
-	}
-
+	
 	@GetMapping("/newSell")
 	public String affichageNewSell() {
 		return "newSell";

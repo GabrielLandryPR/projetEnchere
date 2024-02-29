@@ -1,22 +1,31 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
-    <head>
-        <title>Spring Security Example </title>
-    </head>
-    <body>
-		<div th:replace="~{fragment/fragment-entete :: frag-entete}"></div>
-        <div th:if="${param.error}">
-            Invalid username and password.
+
+<head>
+	<title>Spring Security Example </title>
+</head>
+
+<body>
+	<div th:replace="~{fragment/fragment-entete :: frag-entete}"></div>
+	      <div th:if="${param.error}">
+            Mot de passe où idantifiant incorrect.
         </div>
         <div th:if="${param.logout}">
-            You have been logged out.
+            Vous êtes déconnecté.
         </div>
-        <form th:action="@{/login}" method="post">
-            <div><label> User Name : <input type="text" name="username"/> </label></div>
-            <div><label> Password: <input type="password" name="password"/> </label></div>
-            <div><input type="submit" value="Sign In"/></div>
-            
-        </form>
-        <a href="/monProfil">Créer un compte</a>
-    </body>
+	<form th:action="@{/login}" method="post">
+		<div>
+			<label for="username"> User Name : <input type="text" name="username" required="required"/>  </label>
+		<!--	<div th:replace="~{fragment/fragment-error :: frag-error('error')}"></div> -->
+		</div>
+		<div>
+			<label for="password"> Password: <input type="password" name="password" required="required"/> </label>
+		<!--	<div th:replace="~{fragment/fragment-error :: frag-error('password')}"></div> -->
+		</div>
+		<div><input type="submit" value="Sign In" /></div>
+
+	</form>
+	<a href="/monProfil">Créer un compte</a>
+</body>
+
 </html>

@@ -1,7 +1,6 @@
 package fr.eni.securingWeb;
 
 import java.util.Optional;
-import org.springframework.security.core.userdetails.User.UserBuilder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

@@ -9,6 +9,10 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
 public class Utilisateur implements UserDetails {
 
 	/**
@@ -16,15 +20,22 @@ public class Utilisateur implements UserDetails {
 	 */
 	private static final long serialVersionUID = -8337029451390245757L;
 	//****Variables	
+	
 	int noUtilisateur;
+	@NotBlank
+	@Size(min=1)
 	String pseudo;
 	String nom;
 	String prenom;
+	@NotBlank
+	@Size(min=1)
 	String email;
 	int telephone;
 	String rue;
 	int codePostal;
 	String ville;
+	@NotBlank
+	@Size(min=1)
 	String motDePasse;
 	Integer credit;
 	boolean isAdmin;
