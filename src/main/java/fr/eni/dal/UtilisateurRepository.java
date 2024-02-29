@@ -14,4 +14,6 @@ public interface UtilisateurRepository {
 	Optional<Utilisateur> findByPseudo(String username);
 	
 	Optional<Utilisateur> saveUser(Utilisateur utilisateur);
+	
+	Optional<Utilisateur> findUserByEmail(String email);
 }

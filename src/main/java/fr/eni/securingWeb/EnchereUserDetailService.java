@@ -20,9 +20,14 @@ public class EnchereUserDetailService implements UserDetailsService{
 	
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 	    Optional<Utilisateur> optMembre = utilisateurRepository.findByPseudo(username);
-
+	    System.out.println("findByPseudo" + optMembre);
 	    if (optMembre.isEmpty()) {
-	        throw new UsernameNotFoundException("Utilisateur non trouvé : " + username);
+	        optMembre = utilisateurRepository.findUserByEmail(username);
+	        System.out.println("findByEmail" + optMembre);
+	    };
+	    if(optMembre.isEmpty()){
+	    	System.out.println("echec");
+	    	throw new UsernameNotFoundException("Utilisateur non trouvé : " + username);
 	    }
 
 	    Utilisateur utilisateur = optMembre.get();

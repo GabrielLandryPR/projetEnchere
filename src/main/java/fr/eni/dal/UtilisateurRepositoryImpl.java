@@ -154,4 +154,39 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
 		
 	}
 
+	@Override
+	public Optional<Utilisateur> findUserByEmail(String email) {
+		String sql = "SELECT * FROM UTILISATEURS WHERE email = ?";
+		RowMapper<Utilisateur> rowMapper = new RowMapper<>() {
+
+			@Override
+			public Utilisateur mapRow(ResultSet rs, int rowNum) throws SQLException {
+				Utilisateur utilisateur = new Utilisateur();
+				utilisateur.setNoUtilisateur(rs.getInt("no_utilisateur"));
+				utilisateur.setPseudo(rs.getString("pseudo"));
+				utilisateur.setNom(rs.getString("nom"));
+				utilisateur.setPrenom(rs.getString("prenom"));
+				utilisateur.setEmail(rs.getString("email"));
+				utilisateur.setTelephone(rs.getInt("telephone"));
+				utilisateur.setRue(rs.getString("rue"));
+				utilisateur.setCodePostal(rs.getInt("code_postal"));
+				utilisateur.setVille(rs.getString("ville"));
+				utilisateur.setMotDePasse(rs.getString("mot_de_passe"));
+				utilisateur.setCredit(rs.getInt("credit"));
+				utilisateur.setAdmin(rs.getBoolean("administrateur"));
+				return utilisateur;
+			}
+
+		};
+		Optional<Utilisateur> optUser = null;
+		try {
+			Utilisateur utilisateur = jdbcTemplate.queryForObject(sql, rowMapper, email);
+			System.err.println(utilisateur);
+			optUser = Optional.of(utilisateur);
+		} catch (EmptyResultDataAccessException exc) {
+			optUser = Optional.empty();
+		}
+		return optUser;
+	}
+
 }

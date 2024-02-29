@@ -42,4 +42,11 @@ public class UtilisateurServiceImpl implements UtilisateurService{
 	public void saveUser(Utilisateur utilisateur) {
 		this.utilisateurRepository.saveUser(utilisateur);
 	}
+
+
+	@Override
+	public Optional<Utilisateur> findUserByEmail(String email) {
+		Optional<Utilisateur> optUser = this.utilisateurRepository.findUserByEmail(email);
+		return optUser;
+	}
 }

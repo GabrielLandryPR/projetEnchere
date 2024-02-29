@@ -32,8 +32,6 @@ public class LoginController {
 	@PostMapping("/login")
 	public String login(UserDetails utilisateur) throws UsernameNotFoundException {
 		UserDetails user = this.enchereUserDetailService.loadUserByUsername(utilisateur.getUsername());
-		user.getUsername();
-		user.getPassword();
 		if(user.getUsername().isEmpty()) {
 			return"login";
 		}

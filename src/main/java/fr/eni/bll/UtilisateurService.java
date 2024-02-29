@@ -9,5 +9,7 @@ public interface UtilisateurService {
 	Optional<Utilisateur> loadUserByUsername(String username) throws UsernameNotFoundException;
 	
 	public void saveUser(Utilisateur utilisateur);
+	
+	Optional<Utilisateur> findUserByEmail(String email);
 
 }
