@@ -1,0 +1,25 @@
+@charset "ISO-8859-1";
+
+header .row {
+	width: 48%;
+	padding: 10px;
+}
+
+.nav-list {
+    list-style-type: none;
+}
+
+.nav-list li {
+    float: right;
+    margin-right: 10px;
+}
+a {
+    color: inherit; /* Utilise la couleur héritée du parent */
+    text-decoration: none; /* Supprime le soulignement par défaut */
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+/* Si vous voulez appliquer un style spécifique aux liens au survol, vous pouvez ajouter quelque chose comme ceci : */
+a:hover {
+    text-decoration: underline; /* Ajoutez un soulignement au survol si nécessaire */
+}

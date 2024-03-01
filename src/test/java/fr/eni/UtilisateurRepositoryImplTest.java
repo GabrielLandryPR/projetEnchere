@@ -69,7 +69,7 @@ public class UtilisateurRepositoryImplTest {
     	    List<Enchere> encheres = new ArrayList<>();
 
     	    // Création de l'utilisateur en passant les listes vides
-    	    Utilisateur utilisateur = new Utilisateur("pTESTT", "REUSSI", "pTEST", "eTEST", 10, "rTESTTT", 1, "TEST", "mdpTESTT", 10, false);
+    	    Utilisateur utilisateur = new Utilisateur("pseudo1", "nom1", "prenom1", "email", 10, "rue", 1, "ville", "mdp", false);
     	    utilisateur.setNoUtilisateur(7);
     	    UtilisateurRepository.saveUser(utilisateur);
     	    // Assurez-vous d'ajouter d'autres assertions pour tester le comportement attendu

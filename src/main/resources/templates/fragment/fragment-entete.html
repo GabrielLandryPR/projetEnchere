@@ -1,26 +1,41 @@
 <!-- Navbar -->
 <header th:fragment="frag-entete">
-	<h1 id="nav-title">
-		<a href="/">Enchères</a>
-	</h1>
-	<nav>
-		<ul>
-			<div sec:authorize="!isAuthenticated()">
-				<li><a href="/login">S'inscrire</a></li>
-				<li><a href="/login">Se connecter</a></li>
-			</div>
-			<div sec:authorize="isAuthenticated()">
-				<li>
-					<form th:action="@{/logout}" method="post" name="logoutForm">
-						<input type="submit" href="/logout" value="Se deconnecter"></input>
-					</form>
-				</li>
+	<div class="container-fluid">
+		<div class="d-flex justify-content-between">
 
-				<li><a th:href="@{/monProfil}">Mon Profil</a></li>
-				<li><a href="/newSell">Nouvelle vente</a></li>
-				<li><a href="/remporterVente">Vente remporter</a></li>
-				<li><a href="/detailsVente">Détails ventes</a></li>
-			</div>
-		</ul>
-	</nav>
+			<h1 id="nav-title">
+				<a href="/">ENI-Enchères</a>
+			</h1>
+			<nav>
+				<ul class="nav-list">
+					<li class="dropdown" sec:authorize="!isAuthenticated()">
+						<a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="navbarDropdown"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Log-in
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="/login">S'inscrire</a>
+							<a class="dropdown-item" href="/login">Se connecter</a>
+						</div>
+					</li>
+					<li class="dropdown" sec:authorize="isAuthenticated()">
+						<a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="navbarDropdown"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Menu
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="#" onclick="document.logoutForm.submit();">Se déconnecter</a>
+							<form th:action="@{/logout}" method="post" name="logoutForm" style="display: none;">
+								<input type="hidden" name="_method" value="post" />
+							</form>
+							<a class="dropdown-item" th:href="@{/monProfil}">Mon Profil</a>
+							<a class="dropdown-item" href="/newSell">Nouvelle vente</a>
+							<a class="dropdown-item" href="/remporterVente">Vente remportée</a>
+							<a class="dropdown-item" href="/detailsVente">Détails ventes</a>
+						</div>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
 </header>

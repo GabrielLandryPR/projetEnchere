@@ -4,30 +4,47 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" data-th-href="@{/css/entete.css}">
+	<link rel="stylesheet" data-th-href="@{/css/general.css}">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+		crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+		crossorigin="anonymous"></script>
 </head>
 
 <body>
-	<div th:replace="~{fragment/fragment-entete :: frag-entete}"></div>
-	<form action="createUser" method="post" th:object="${utilisateur}">
-		<div class="container">
-			<div class="column">
-				<label for="pseudo">Pseudo<input type="text" th:field="*{pseudo}" /></label>
-				<label for="prénom">Prénom<input type="text" th:field="*{prenom}" /></label>
-				<label for="telèphone">Telèphone<input type="text" th:field="*{telephone}" /></label>
-				<label for="codePostal">Code Postal<input type="text" th:field="*{codePostal}" /></label>
-				<label for="motDePasse">Mot de passe<input type="text" th:field="*{motDePasse}" /></label>
-				<button class="create-button" type="submit">Créer</button>
-			</div>
-			<div class="column">
+	<div class="container-fluid">
 
-				<label for="nom">Nom<input type="text" value="mettre" th:field="*{nom}" /></label>
-				<label for="email">Email<input type="text" value="mettre" th:field="*{email}"/></label>
-				<label for="rue">Rue<input type="text" value="mettre" th:field="*{rue}"/></label>
-				<label for="ville">Ville<input type="text" value="mettre" th:field="*{ville}"/></label>
-				<label for="confirmation">Confirmation<input type="text"/></label>
-				<button class="modify-button" type="submit">Modifier</button>
+		<div th:replace="~{fragment/fragment-entete :: frag-entete}"></div>
+		<form action="createUser" method="post" th:object="${utilisateur}">
+			<div class="container">
+				<div class="column">
+					<label for="pseudo">Pseudo<input type="text" th:field="*{pseudo}" /></label>
+					<label for="prénom">Prénom<input type="text" th:field="*{prenom}" /></label>
+					<label for="telèphone">Telèphone<input type="text" th:field="*{telephone}" /></label>
+					<label for="codePostal">Code Postal<input type="text" th:field="*{codePostal}" /></label>
+					<label for="motDePasse">Mot de passe<input type="text" th:field="*{motDePasse}" /></label>
+					<button class="create-button" type="submit">Créer</button>
+				</div>
+				<div class="column">
+
+					<label for="nom">Nom<input type="text" value="mettre" th:field="*{nom}" /></label>
+					<label for="email">Email<input type="text" value="mettre" th:field="*{email}" /></label>
+					<label for="rue">Rue<input type="text" value="mettre" th:field="*{rue}" /></label>
+					<label for="ville">Ville<input type="text" value="mettre" th:field="*{ville}" /></label>
+					<label for="confirmation">Confirmation<input type="text" /></label>
+					<button class="modify-button" type="submit">Modifier</button>
+				</div>
 			</div>
-		</div>
-	</form>
+		</form>
+	</div>
 </body>
+
 </html>
