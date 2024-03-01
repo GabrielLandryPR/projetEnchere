@@ -15,6 +15,8 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import fr.eni.bo.Utilisateur;
+import fr.eni.exception.UserNotPresentException;
+
 
 
 @Repository
@@ -154,4 +156,16 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
 		
 	}
 
+	
+	
+	public void deleteUser(int noUtilisateur) throws UserNotPresentException {
+		String sql="delete from UTILISATEURS where no_utilisateur=?";
+		int nbLignes = jdbcTemplate.update(sql, noUtilisateur);
+		if(nbLignes == 0) {
+			throw new UserNotPresentException();
+		}
+		
+	}
+	
+	
 }

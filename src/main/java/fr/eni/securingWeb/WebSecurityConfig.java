@@ -33,7 +33,6 @@ public class WebSecurityConfig {
 					logout.logoutSuccessUrl("/?logout=true");
 					logout.deleteCookies("JSESSIONID"); 
 				})
-				.csrf().disable() 
                 .build();
 				
 		

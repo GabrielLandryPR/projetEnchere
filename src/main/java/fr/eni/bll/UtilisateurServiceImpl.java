@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import fr.eni.bo.Utilisateur;
 import fr.eni.dal.UtilisateurRepository;
+import fr.eni.exception.UserNotPresentException;
 
 @Service
 public class UtilisateurServiceImpl implements UtilisateurService{
@@ -42,4 +43,13 @@ public class UtilisateurServiceImpl implements UtilisateurService{
 	public void saveUser(Utilisateur utilisateur) {
 		this.utilisateurRepository.saveUser(utilisateur);
 	}
+	
+	public void deleteUser(int id) {
+		try {
+			this.utilisateurRepository.deleteUser(id);
+		} catch (UserNotPresentException e) {
+			e.printStackTrace();
+		}
+	}
+	
 }
