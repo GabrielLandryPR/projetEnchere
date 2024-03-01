@@ -4,36 +4,34 @@ body {
     padding: 0;
 }
 
-.container {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 50px;
-}
-
 .column {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    float: left;
+    width: 50%;
+    box-sizing: border-box; /* pour inclure le padding et la bordure dans la largeur */
+    padding: 10px; /* espace intérieur */
 }
 
-.input-group {
-    margin-bottom: 20px;
+.column.left-column {
+    float: left;
+}
+
+.column.right-column {
+    float: right;
 }
 
 .input-group input {
-    margin-bottom: 10px; /* Ajout de marge entre chaque input */
+    margin-bottom: 10px;
     padding: 5px;
-    width: 200px;
+    width: calc(100% - 20px); /* largeur - 2 * padding */
+    box-sizing: border-box; /* pour inclure le padding et la bordure dans la largeur */
 }
 
 .buttons {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
+    clear: both; /* pour forcer le container à s'adapter à la hauteur des colonnes */
+    padding-top: 10px; /* espacement entre les colonnes et les boutons */
 }
 
 .buttons button {
-    margin: 0 10px; /* Ajout de marge entre les boutons */
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;

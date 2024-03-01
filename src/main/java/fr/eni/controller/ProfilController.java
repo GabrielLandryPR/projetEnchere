@@ -7,9 +7,12 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import fr.eni.bo.Utilisateur;
 import fr.eni.dal.UtilisateurRepository;
+import fr.eni.exception.UserNotPresentException;
 
 @Controller
 public class ProfilController {
@@ -25,11 +28,22 @@ public class ProfilController {
             optUtilisateur.ifPresent(utilisateur -> {
                 model.addAttribute("nom", utilisateur.getNom());
                 model.addAttribute("prenom", utilisateur.getPrenom());
+                model.addAttribute("pseudo", utilisateur.getPseudo());
+                model.addAttribute("email", utilisateur.getEmail());
+                model.addAttribute("telephone", utilisateur.getTelephone());
+                model.addAttribute("rue", utilisateur.getRue());
+                model.addAttribute("codePostal", utilisateur.getCodePostal());
+                model.addAttribute("ville", utilisateur.getVille());
+                model.addAttribute("noUtilisateur", utilisateur.getNoUtilisateur());
             });
         }
 
         return "monProfil";
     }
+    
+    
+    
+  
 }
 
 

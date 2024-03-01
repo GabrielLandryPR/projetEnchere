@@ -53,9 +53,9 @@ public class UtilisateurServiceImpl implements UtilisateurService{
 	}
 
 	
-	public void deleteUser(int id) {
+	public void deleteUser(int noUtilisateur) {
 		try {
-			this.utilisateurRepository.deleteUser(id);
+			this.utilisateurRepository.deleteUser(noUtilisateur);
 		} catch (UserNotPresentException e) {
 			e.printStackTrace();
 		}

@@ -12,8 +12,8 @@ public interface UtilisateurService {
 	
 	Optional<Utilisateur> findUserByEmail(String email);
 	
-	// DELETE
+	void deleteUser(int id);
 	
-	// REMONTER CRUD REPOSITORY VERS SERVICE
+	Optional<Utilisateur> consulterUserId(int id);
 
 }
