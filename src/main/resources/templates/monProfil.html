@@ -20,43 +20,23 @@
 </head>
 
 <body>
-<<<<<<< HEAD
-	<div th:replace="~{fragment/fragment-entete :: frag-entete}"></div>
-
-	<div class="column left-column">
-		<label for="nom">Pseudo</label>
-		<input type="text" th:value="${pseudo}" />
-		<label for="prenom">Prénom</label>
-		<input type="text" th:value="${prenom}" />
-		<label for="telephone">Téléphone</label>
-		<input type="text" th:value="${telephone}" />
-		<label for="codePostal">Code Postal</label>
-		<input type="text" th:value="${codePostal}" />
-		<label for="motDePasse">Mot de passe</label>
-		<input type="text" placeholder="*********" />
-		<button class="create-button">Créer</button>
-=======
 	<div class="container-fluid">
 		<div th:replace="~{fragment/fragment-entete :: frag-entete}"></div>
-		<div class="container-fluid">
-			<div class="column">
-				<p>Nom: <span th:text="${nom}"></span></p>
-				<p>Prénom: <span th:text="${prenom}"></span></p>
-				<input type="text" value="mettre" />
-				<input type="text" value="valeur" />
-				<input type="text" value="de" />
-				<input type="text" value="l'utilisateur" />
-				<button class="create-button">Créer</button>
-			</div>
-			<div class="column">
-				<input type="text" value="actuel" />
-				<input type="text" value="avec" />
-				<input type="text" value="thymeleaf" />
-				<input type="text" />
-				<button class="modify-button">Modifier</button>
-			</div>
+
+		<div class="column left-column">
+			<label for="nom">Pseudo</label>
+			<input type="text" th:value="${pseudo}" />
+			<label for="prenom">Prénom</label>
+			<input type="text" th:value="${prenom}" />
+			<label for="telephone">Téléphone</label>
+			<input type="text" th:value="${telephone}" />
+			<label for="codePostal">Code Postal</label>
+			<input type="text" th:value="${codePostal}" />
+			<label for="motDePasse">Mot de passe</label>
+			<input type="text" placeholder="*********" />
+			<button class="create-button">Créer</button>
+
 		</div>
->>>>>>> b26cd1e157164fe76f68ec1a442dacb9a033e509
 	</div>
 	<div class="column right-column">
 		<label for="nom">Nom</label>
