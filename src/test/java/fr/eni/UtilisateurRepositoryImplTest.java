@@ -25,7 +25,7 @@ public class UtilisateurRepositoryImplTest {
 	@Autowired
 	private UtilisateurRepositoryImpl UtilisateurRepository;
 	@Autowired
-    private PasswordEncoder passwordEncoder;  // Assurez-vous que l'encodeur est injecté correctement
+	private PasswordEncoder passwordEncoder; // Assurez-vous que l'encodeur est injecté correctement
 
 	@Test
 	@DisplayName("Test find all users")
@@ -33,7 +33,7 @@ public class UtilisateurRepositoryImplTest {
 		List<Utilisateur> utilisateurs = UtilisateurRepository.findAllUsers();
 		System.out.println(utilisateurs);
 	}
-	
+
 	@Test
 	@DisplayName("Test find by id")
 	void testFindUserById() {
@@ -43,54 +43,49 @@ public class UtilisateurRepositoryImplTest {
 		assertEquals(idUser, optUser.get().getNoUtilisateur());
 		System.out.println(optUser);
 	}
-	
 
-    @Test
-    @DisplayName("Test encrypteur")
-    void testEncrypt() {
-        // Données de test
-        String rawPassword = "Pa$$w0rd";
+	@Test
+	@DisplayName("Test encrypteur")
+	void testEncrypt() {
+		// Données de test
+		String rawPassword = "Pa$$w0rd";
 
-        // Utilisation de l'encodeur
-        String encodedPassword = passwordEncoder.encode(rawPassword);
+		// Utilisation de l'encodeur
+		String encodedPassword = passwordEncoder.encode(rawPassword);
 
-        // Affichage des résultats
-        System.out.println("Raw Password: " + rawPassword);
-        System.out.println("Encoded Password: " + encodedPassword);
+		// Affichage des résultats
+		System.out.println("Raw Password: " + rawPassword);
+		System.out.println("Encoded Password: " + encodedPassword);
 
-        // Vérification que le mot de passe encodé correspond à la version en clair
-        assertTrue(passwordEncoder.matches(rawPassword, encodedPassword));
-    }
-    
-    //Test de DELETE
-    @Test
+		// Vérification que le mot de passe encodé correspond à la version en clair
+		assertTrue(passwordEncoder.matches(rawPassword, encodedPassword));
+	}
+
+	@Test
     @DisplayName("Test delete")
     public void testDeleteUser() {
     	int noUtilisateur = 30;
 		try {
 			UtilisateurRepository.deleteUser(noUtilisateur);
 		}catch(Exception exc) {
-			fail();
-			return;
+			fail();}
 		}
-    }
-    
-    
-    
-    
-//    @Test//Finir le test unitaire avant de push sur git           EN COMMENTAIRE CAR TEST UNITAIRE PLUS FONCTIONNEL IL FAUT CHANGER 
-//    @DisplayName("Test SAVEUSER")
-//    void testSave() {
-//    	  List<ArticleVendu> articlesVendus = new ArrayList<>();
-//    	    List<Enchere> encheres = new ArrayList<>();
-//
-//    	    // Création de l'utilisateur en passant les listes vides
-//    	    Utilisateur utilisateur = new Utilisateur("pTESTT", "REUSSI", "pTEST", "eTEST", 10, "rTESTTT", 1, "TEST", "mdpTESTT", 10, false);      CETTE LIGNEEE
-//    	    utilisateur.setNoUtilisateur(7);
-//    	    UtilisateurRepository.saveUser(utilisateur);
-//    	    // Assurez-vous d'ajouter d'autres assertions pour tester le comportement attendu
-//    	    assertNotNull(utilisateur);
-//    	    assertEquals("pTESTT", utilisateur.getPseudo());
-//    	    assertEquals("REUSSI", utilisateur.getNom());
-//    }
+
+	@Test // Finir le test unitaire avant de push sur git
+	@DisplayName("Test SAVEUSER")
+	void testSave() {
+		List<ArticleVendu> articlesVendus = new ArrayList<>();
+		List<Enchere> encheres = new ArrayList<>();
+
+		// Création de l'utilisateur en passant les listes vides
+		Utilisateur utilisateur = new Utilisateur("pseudo1", "nom1", "prenom1", "email", 10, "rue", 1, "ville", "mdp",
+				false);
+		utilisateur.setNoUtilisateur(7);
+		UtilisateurRepository.saveUser(utilisateur);
+		// Assurez-vous d'ajouter d'autres assertions pour tester le comportement
+		// attendu
+		assertNotNull(utilisateur);
+		assertEquals("pTESTT", utilisateur.getPseudo());
+		assertEquals("REUSSI", utilisateur.getNom());
+	}
 }

@@ -4,79 +4,94 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Accueil</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" data-th-href="@{/css/entete.css}">
+	<link rel="stylesheet" data-th-href="@{/css/general.css}">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+		crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+		crossorigin="anonymous"></script>
 </head>
 
 <body>
+	<div class="container-fluid">
 
-	<div th:replace="~{fragment/fragment-entete :: frag-entete}"></div>
-	        <div th:if="${param.logout}">
-            Vous êtes déconnecté.
-        </div>
-	<h1 style="text-align: center;">Liste des enchères</h1>
-	<form action="" method="post">
-		<label for="search">Recherche d'une enchère :</label><input name="search" type="text" placeholder="search" />
-		<select class="form-select form-select-lg mb-3" aria-label="Large select example">
-			<option selected>Catégories</option>
-			<option value="1">Informatique</option>
-			<option value="2">Ameublement</option>
-			<option value="3">Vêtement</option>
-			<option value="3">Sport</option>
-			<option value="3">Loisir</option>
-		</select>
-		<button type="submit" name="btn">Rechercher</button>
-	</form>
-	<div>
-		<ul>
-			<li>
-				<input type="radio" name="list1" id="list1">
-				<label for="list1">Élément 1</label>
-			</li>
-		</ul>
-		<ul>
-			<li>
-				<input type="checkbox" name="list1a" id="slist1">
-				<label for="slist1">Élément interne 1</label>
-			</li>
-			<li>
-				<input type="checkbox" name="list1b" id="slist2">
-				<label for="slist2">Élément interne 2</label>
-			</li>
-			<li>
-				<input type="checkbox" name="list1c" id="slist3">
-				<label for="slist3">Élément interne 3</label>
-			</li>
-		</ul>
-	</div>
 
-	<div>
-		<ul>
-			<li>
-				<input type="checkbox" name="list2" id="list2">
-				<label for="list2">Élément 2</label>
-			</li>
-		</ul>
-		<ul>
-			<li>
-				<input type="checkbox" name="list2a" id="slist4">
-				<label for="slist4">Élément interne 1</label>
-			</li>
-			<li>
-				<input type="checkbox" name="list2b" id="slist2" value="slist5">
-				<label for="slist5">Élément interne 2</label>
-			</li>
-			<li>
-				<input type="checkbox" name="list2c" id="slist2" value="slist6">
-				<label for="slist6">Élément interne 3</label>
-			</li>
-		</ul>
-	</div>
+		<div class="row" th:replace="~{fragment/fragment-entete :: frag-entete}"></div>
+		<div th:if="${param.logout}"> Vous êtes déconnecté. </div>
+		<h1 style="text-align: center;">Liste des enchères</h1>
+		<div class="container">
+			<form action="" method="post">
+				<label for="search">Recherche d'une enchère :</label><input name="search" type="text"
+					placeholder="search" />
+				<select class="form-select form-select-lg mb-3" aria-label="Large select example">
+					<option selected>Catégories</option>
+					<option value="1">Informatique</option>
+					<option value="2">Ameublement</option>
+					<option value="3">Vêtement</option>
+					<option value="3">Sport</option>
+					<option value="3">Loisir</option>
+				</select>
+				<button type="submit" name="btn">Rechercher</button>
+			</form>
+			<div>
+				<ul>
+					<li>
+						<input type="radio" name="list1" id="list1">
+						<label for="list1">Élément 1</label>
+					</li>
+				</ul>
+				<ul>
+					<li>
+						<input type="checkbox" name="list1a" id="slist1">
+						<label for="slist1">Élément interne 1</label>
+					</li>
+					<li>
+						<input type="checkbox" name="list1b" id="slist2">
+						<label for="slist2">Élément interne 2</label>
+					</li>
+					<li>
+						<input type="checkbox" name="list1c" id="slist3">
+						<label for="slist3">Élément interne 3</label>
+					</li>
+				</ul>
+			</div>
 
-	<h1>Futur affichage des articles ...</h1>
-	<div>
-		<table>
-			<tbody>
-				<!-- Boucle pour afficher toutes les enchères -->
-				<!--        <tr th:each="e : ${encheres}">
+			<div>
+				<ul>
+					<li>
+						<input type="checkbox" name="list2" id="list2">
+						<label for="list2">Élément 2</label>
+					</li>
+				</ul>
+				<ul>
+					<li>
+						<input type="checkbox" name="list2a" id="slist4">
+						<label for="slist4">Élément interne 1</label>
+					</li>
+					<li>
+						<input type="checkbox" name="list2b" id="slist2" value="slist5">
+						<label for="slist5">Élément interne 2</label>
+					</li>
+					<li>
+						<input type="checkbox" name="list2c" id="slist2" value="slist6">
+						<label for="slist6">Élément interne 3</label>
+					</li>
+				</ul>
+			</div>
+
+			<h1>Futur affichage des articles ...</h1>
+			<div>
+				<table>
+					<tbody>
+						<!-- Boucle pour afficher toutes les enchères -->
+						<!--        <tr th:each="e : ${encheres}">
                     <td th:text="${e.genre.titre}"></td>
                     <td th:text="${f.annee}"></td>
                     <td th:text="${f.titre}"></td>
@@ -84,6 +99,9 @@
                 </tr>
             </tbody>
         </table> -->
+			</div>
+
+		</div>
 	</div>
 </body>
 
