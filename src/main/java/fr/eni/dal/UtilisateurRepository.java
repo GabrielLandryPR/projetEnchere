@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import fr.eni.bo.Utilisateur;
+import fr.eni.exception.UserNotPresentException;
 
 public interface UtilisateurRepository {
 
@@ -20,4 +21,6 @@ public interface UtilisateurRepository {
 	// DELETE
 	
 	// REMONTER CRUD REPOSITORY VERS SERVICE
+	void deleteUser(int noUtilisateur) throws UserNotPresentException;
+
 }

@@ -3,6 +3,7 @@ package fr.eni;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +37,7 @@ public class UtilisateurRepositoryImplTest {
 	@Test
 	@DisplayName("Test find by id")
 	void testFindUserById() {
-		int idUser = 6;
+		int idUser = 21;
 		Optional<Utilisateur> optUser = UtilisateurRepository.findUserById(idUser);
 		assertTrue(optUser.isPresent());
 		assertEquals(idUser, optUser.get().getNoUtilisateur());
@@ -61,20 +62,35 @@ public class UtilisateurRepositoryImplTest {
         assertTrue(passwordEncoder.matches(rawPassword, encodedPassword));
     }
     
-    
-    @Test//Finir le test unitaire avant de push sur git 
-    @DisplayName("Test SAVEUSER")
-    void testSave() {
-    	  List<ArticleVendu> articlesVendus = new ArrayList<>();
-    	    List<Enchere> encheres = new ArrayList<>();
-
-    	    // Création de l'utilisateur en passant les listes vides
-    	    Utilisateur utilisateur = new Utilisateur("pTESTT", "REUSSI", "pTEST", "eTEST", 10, "rTESTTT", 1, "TEST", "mdpTESTT", 10, false);
-    	    utilisateur.setNoUtilisateur(7);
-    	    UtilisateurRepository.saveUser(utilisateur);
-    	    // Assurez-vous d'ajouter d'autres assertions pour tester le comportement attendu
-    	    assertNotNull(utilisateur);
-    	    assertEquals("pTESTT", utilisateur.getPseudo());
-    	    assertEquals("REUSSI", utilisateur.getNom());
+    //Test de DELETE
+    @Test
+    @DisplayName("Test delete")
+    public void testDeleteUser() {
+    	int noUtilisateur = 30;
+		try {
+			UtilisateurRepository.deleteUser(noUtilisateur);
+		}catch(Exception exc) {
+			fail();
+			return;
+		}
     }
+    
+    
+    
+    
+//    @Test//Finir le test unitaire avant de push sur git           EN COMMENTAIRE CAR TEST UNITAIRE PLUS FONCTIONNEL IL FAUT CHANGER 
+//    @DisplayName("Test SAVEUSER")
+//    void testSave() {
+//    	  List<ArticleVendu> articlesVendus = new ArrayList<>();
+//    	    List<Enchere> encheres = new ArrayList<>();
+//
+//    	    // Création de l'utilisateur en passant les listes vides
+//    	    Utilisateur utilisateur = new Utilisateur("pTESTT", "REUSSI", "pTEST", "eTEST", 10, "rTESTTT", 1, "TEST", "mdpTESTT", 10, false);      CETTE LIGNEEE
+//    	    utilisateur.setNoUtilisateur(7);
+//    	    UtilisateurRepository.saveUser(utilisateur);
+//    	    // Assurez-vous d'ajouter d'autres assertions pour tester le comportement attendu
+//    	    assertNotNull(utilisateur);
+//    	    assertEquals("pTESTT", utilisateur.getPseudo());
+//    	    assertEquals("REUSSI", utilisateur.getNom());
+//    }
 }

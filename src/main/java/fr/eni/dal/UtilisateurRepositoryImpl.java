@@ -12,9 +12,13 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 
 import fr.eni.bo.Utilisateur;
+import fr.eni.exception.UserNotPresentException;
+import fr.eni.securingWeb.WebSecurityConfig;
+
 
 
 @Repository
@@ -22,10 +26,12 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
 
 	private JdbcTemplate jdbcTemplate;
 	private NamedParameterJdbcTemplate namedJdbcTemplate;
+	private PasswordEncoder passwordEncoder;
 
-	public UtilisateurRepositoryImpl(JdbcTemplate jdbcTemplate, NamedParameterJdbcTemplate namedJdbcTemplate) {
+	public UtilisateurRepositoryImpl(JdbcTemplate jdbcTemplate, NamedParameterJdbcTemplate namedJdbcTemplate, PasswordEncoder passwordEncoder) {
 		this.jdbcTemplate = jdbcTemplate;
 		this.namedJdbcTemplate = namedJdbcTemplate;
+		this.passwordEncoder = passwordEncoder;
 	}
 
 	@Override
@@ -136,7 +142,7 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
 					parameterSource.addValue("rue", utilisateur.getRue());
 					parameterSource.addValue("code_postal", utilisateur.getCodePostal());
 					parameterSource.addValue("ville", utilisateur.getVille());
-					parameterSource.addValue("mot_de_passe", utilisateur.getMotDePasse());
+					parameterSource.addValue("mot_de_passe", passwordEncoder.encode(utilisateur.getMotDePasse()));
 					parameterSource.addValue("credit", 54540);
 					parameterSource.addValue("administrateur", utilisateur.isAdmin());
 				KeyHolder keyHolder = new GeneratedKeyHolder();
@@ -153,6 +159,7 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
 		return Optional.of(utilisateur);
 		
 	}
+
 
 	@Override
 	public Optional<Utilisateur> findUserByEmail(String email) {
@@ -188,5 +195,19 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
 		}
 		return optUser;
 	}
+
+
+	
+	
+	public void deleteUser(int noUtilisateur) throws UserNotPresentException {
+		String sql="delete from UTILISATEURS where no_utilisateur=?";
+		int nbLignes = jdbcTemplate.update(sql, noUtilisateur);
+		if(nbLignes == 0) {
+			throw new UserNotPresentException();
+		}
+		
+	}
+	
+	
 
 }
