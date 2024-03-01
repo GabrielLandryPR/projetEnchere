@@ -57,6 +57,7 @@ public class UtilisateurRepositoryImplTest {
 		System.out.println("Raw Password: " + rawPassword);
 		System.out.println("Encoded Password: " + encodedPassword);
 
+
 		// Vérification que le mot de passe encodé correspond à la version en clair
 		assertTrue(passwordEncoder.matches(rawPassword, encodedPassword));
 	}
@@ -88,4 +89,6 @@ public class UtilisateurRepositoryImplTest {
 		assertEquals("pTESTT", utilisateur.getPseudo());
 		assertEquals("REUSSI", utilisateur.getNom());
 	}
+    
+    
 }

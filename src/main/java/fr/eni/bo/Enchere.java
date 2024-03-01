@@ -1,19 +1,21 @@
 package fr.eni.bo;
 
-import java.time.LocalDate;
+import java.util.Date;
+import java.util.Optional;
 
 
 public class Enchere {
 	
 	
 	//****Variable
-	LocalDate dateEnchere;
+	Date dateEnchere;
 	int montant_enchere;
 	
-	private ArticleVendu articleVendu;
-	private Utilisateur utilisateur;
+	private int idArticle;
+	private int idUtilisateur;
 	
-
+	
+	
 	//****Constructeur par défaut 
 	public Enchere() {
 		super();
@@ -21,26 +23,26 @@ public class Enchere {
 	
 	
 	//Constructeurs
-	public Enchere(LocalDate dateEnchere, int montant_enchere) {
+	public Enchere(Date dateEnchere, int montant_enchere) {
 		this.dateEnchere = dateEnchere;
 		this.montant_enchere = montant_enchere;
 	}
 
 	//Constructeurs plein
-	public Enchere(LocalDate dateEnchere, int montant_enchere, ArticleVendu articleVendu, Utilisateur utilisateur) {
+	public Enchere(Date dateEnchere, int montant_enchere, int articleVendu, int utilisateur) {
 		this.dateEnchere = dateEnchere;
 		this.montant_enchere = montant_enchere;
-		this.articleVendu = articleVendu;
-		this.utilisateur = utilisateur;
+		this.idArticle = articleVendu;
+		this.idUtilisateur = utilisateur;
 	}
 
 
-	public LocalDate getDateEnchere() {
+	public Date getDateEnchere() {
 		return dateEnchere;
 	}
 
 
-	public void setDateEnchere(LocalDate dateEnchere) {
+	public void setDateEnchere(Date dateEnchere) {
 		this.dateEnchere = dateEnchere;
 	}
 
@@ -55,23 +57,36 @@ public class Enchere {
 	}
 
 
-	public ArticleVendu getArticleVendu() {
-		return articleVendu;
+	public int getArticleVendu() {
+		return idArticle;
 	}
 
 
-	public void setArticleVendu(ArticleVendu articleVendu) {
-		this.articleVendu = articleVendu;
+	public void setArticleVendu(int articleVendu) {
+		this.idArticle = articleVendu;
 	}
 
 
-	public Utilisateur getUtilisateur() {
-		return utilisateur;
+	public int getUtilisateur() {
+		return idUtilisateur;
 	}
 
 
-	public void setUtilisateur(Utilisateur utilisateur) {
-		this.utilisateur = utilisateur;
+	public void setUtilisateur(int utilisateur) {
+		this.idUtilisateur = utilisateur;
+	}
+
+
+	public void setUtilisateur(Optional<Utilisateur> findUserById) {
+		this.idUtilisateur = idUtilisateur;
+		
+	}
+
+
+	@Override
+	public String toString() {
+		return "Enchere [dateEnchere=" + dateEnchere + ", montant_enchere=" + montant_enchere + ", articleVendu="
+				+ idArticle + ", utilisateur=" + idUtilisateur + "]";
 	}
 	
 	
