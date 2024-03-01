@@ -80,7 +80,6 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
 		Optional<Utilisateur> optUser = null;
 		try {
 			Utilisateur utilisateur = jdbcTemplate.queryForObject(sql, rowMapper, id);
-			System.err.println(utilisateur);
 			optUser = Optional.of(utilisateur);
 		} catch (EmptyResultDataAccessException exc) {
 			optUser = Optional.empty();
