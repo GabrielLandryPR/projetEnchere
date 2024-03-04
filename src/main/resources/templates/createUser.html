@@ -8,6 +8,7 @@
 		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" data-th-href="@{/css/entete.css}">
 	<link rel="stylesheet" data-th-href="@{/css/general.css}">
+	<link rel="stylesheet" data-th-href="@{/css/createUser.css}">
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 		crossorigin="anonymous"></script>
@@ -17,31 +18,85 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
 		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 		crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/ade1732ef0.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
 	<div th:replace="~{fragment/fragment-entete :: frag-entete}"></div>
-	<form action="createUser" method="post" th:object="${utilisateur}">
-		<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"><div class="container">
-				<div class="column">
-					<label for="pseudo">Pseudo<input type="text" th:field="*{pseudo}" /></label>
-					<label for="prénom">Prénom<input type="text" th:field="*{prenom}" /></label>
-					<label for="telèphone">Telèphone<input type="text" th:field="*{telephone}" /></label>
-					<label for="codePostal">Code Postal<input type="text" th:field="*{codePostal}" /></label>
-					<label for="motDePasse">Mot de passe<input type="text" th:field="*{motDePasse}" /></label>
-					<button class="create-button" type="submit">Créer</button>
-				</div>
-				<div class="column">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="zoneForm col-md-6 mx-auto">
+				<h1 class="text-center">Création de compte</h1>
+				<form action="createUser" method="post" th:object="${utilisateur}">
+					<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-6 form-group">
+								<label for="pseudo">Pseudo</label>
+								<input type="text" class="form-control" th:field="*{pseudo}" />
+							</div>
+							<div class="col-md-6"></div>
+						</div>
+						<div class="row">
+							<div class="col-md-6 form-group">
+								<label for="nom">Nom</label>
+								<input type="text" class="form-control" value="mettre" th:field="*{nom}" />
+							</div>
+							<div class="col-md-6 form-group">
+								<label for="prénom">Prénom</label>
+								<input type="text" class="form-control" th:field="*{prenom}" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6 form-group">
+								<label for="email">Email</label>
+								<input type="text" class="form-control" value="mettre" th:field="*{email}" />
+							</div>
+							<div class="col-md-6 form-group">
+								<label for="telèphone">Téléphone</label>
+								<input type="text" class="form-control" th:field="*{telephone}" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6 form-group">
+								<label for="rue">Rue</label>
+								<input type="text" class="form-control" value="mettre" th:field="*{rue}" />
+							</div>
+							<div class="col-md-6"></div>
+						</div>
+						<div class="row">
+							<div class="col-md-6 form-group">
+								<label for="codePostal">Code Postal</label>
+								<input type="text" class="form-control" th:field="*{codePostal}" />
+							</div>
+							<div class="col-md-6 form-group">
+								<label for="ville">Ville</label>
+								<input type="text" class="form-control" value="mettre" th:field="*{ville}" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6 form-group">
+								<label for="motDePasse">Mot de passe</label>
+								<input type="text" class="form-control" th:field="*{motDePasse}" />
+							</div>
+							<div class="col-md-6 form-group">
+								<label for="confirmation">Confirmation</label>
+								<input type="text" class="form-control" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<button class="shared-style create modify-button" type="submit">Créer</button>
+							</div>
+							<div class="col-md-6">
+								<button class="shared-style cancel create-button" type="cancel">Annuler</button>
+							</div>
+						</div>
 
-					<label for="nom">Nom<input type="text" value="mettre" th:field="*{nom}" /></label>
-					<label for="email">Email<input type="text" value="mettre" th:field="*{email}" /></label>
-					<label for="rue">Rue<input type="text" value="mettre" th:field="*{rue}" /></label>
-					<label for="ville">Ville<input type="text" value="mettre" th:field="*{ville}" /></label>
-					<label for="confirmation">Confirmation<input type="text" /></label>
-					<button class="modify-button" type="submit">Modifier</button>
-				</div>
+					</div>
+				</form>
 			</div>
-		</form>
+		</div>
 	</div>
 </body>
 

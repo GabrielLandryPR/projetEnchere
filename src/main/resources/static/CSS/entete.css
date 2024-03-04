@@ -6,24 +6,59 @@ header .row {
 }
 
 .nav-list {
-    list-style-type: none;
+	list-style-type: none;
 }
 
 .nav-list li {
-    float: right;
-    margin-right: 10px;
+	float: right;
+	margin-right: 10px;
 }
+
 a {
-    color: inherit; /* Utilise la couleur héritée du parent */
-    text-decoration: none; /* Supprime le soulignement par défaut */
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+	color: inherit;
+	/* Utilise la couleur héritée du parent */
+	text-decoration: none;
+	/* Supprime le soulignement par défaut */
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
 
 /* Si vous voulez appliquer un style spécifique aux liens au survol, vous pouvez ajouter quelque chose comme ceci : */
 a:hover {
-    text-decoration: underline; /* Ajoutez un soulignement au survol si nécessaire */
+	text-decoration: underline;
+	/* Ajoutez un soulignement au survol si nécessaire */
 }
 
-header nav{
+header nav {
 	margin-right: 20px;
+}
+
+header {
+	height: 100vh;
+	/* 100% de la hauteur de la vue (viewport height) */
+	width: 100%;
+	/* 100% de la largeur du parent (header) */
+	background-image: url(../IMG/bandeau\ enchere.png);
+	background-size: cover;
+	/* Pour que l'image s'étire pour couvrir toute la div */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	max-height: 15vh;
+	color: rgb(255, 128, 192);
+}
+
+.dropdown-toggle {
+	width: auto;
+	height: auto;
+	box-shadow: 0 20px 30px -6px rgb(255, 128, 255);
+	outline: none;
+	cursor: pointer;
+	border: none;
+	font-size: 24px;
+	color: white;
+	background-color: rgb(128, 0, 255);
+}
+
+.fa-house {
+	color: rgb(128, 0, 255);
 }

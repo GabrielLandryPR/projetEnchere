@@ -7,6 +7,7 @@
 		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" data-th-href="@{/css/entete.css}">
 	<link rel="stylesheet" data-th-href="@{/css/general.css}">
+	<link rel="stylesheet" data-th-href="@{/css/login.css}">
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 		crossorigin="anonymous"></script>
@@ -16,29 +17,37 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
 		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 		crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/ade1732ef0.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
+	<div th:replace="~{fragment/fragment-entete :: frag-entete}"></div>
 	<div class="container-fluid">
-
-		<div th:replace="~{fragment/fragment-entete :: frag-entete}"></div>
-		<div th:if="${param.error}">
-			Mot de passe où idantifiant incorrect.
-		</div>
-		<div th:if="${param.logout}">
-			Vous êtes déconnecté.
-		</div>
-		<form th:action="@{/login}" method="post">
-			<div>
-				<label for="username"> User Name : <input type="text" name="username" required="required" /> </label>
+		<div class="row">
+			<div class="zoneForm  mx-auto">
+				<div class="incorrect" th:if="${param.error}">
+					Mot de passe où idantifiant incorrect.
+				</div>
+				<form th:action="@{/login}" method="post">
+					<div class="row form-group">
+						<label for="username"> User Name : </label>
+						<input type="text" name="username" required="required" />
+					</div>
+					<div class="row form-group">
+						<label for="password"> Password:</label>
+						<input type="password" name="password" required="required" />
+					</div>
+					<div class="row form-group d-flex justify-content-between">
+						<div class="">
+							<input type="submit" class="shared-style btn btn-login" value="Connexion" />
+						</div>
+						<div class="">
+							<a href="/createUser" class="shared-style btn btn-create">Créer un compte</a>
+						</div>
+					</div>
+				</form>
 			</div>
-			<div>
-				<label for="password"> Password: <input type="password" name="password" required="required" /> </label>
-			</div>
-			<div><input type="submit" value="Sign In" /></div>
-
-		</form>
-		<a href="/createUser">Créer un compte</a>
+		</div>
 	</div>
 </body>
 
