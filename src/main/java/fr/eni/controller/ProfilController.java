@@ -26,6 +26,7 @@ public class ProfilController {
             String username = authentication.getName();
             Optional<Utilisateur> optUtilisateur = utilisateurRepository.findByPseudo(username);
             optUtilisateur.ifPresent(utilisateur -> {
+                model.addAttribute("utilisateur", utilisateur);
                 model.addAttribute("nom", utilisateur.getNom());
                 model.addAttribute("prenom", utilisateur.getPrenom());
                 model.addAttribute("pseudo", utilisateur.getPseudo());
