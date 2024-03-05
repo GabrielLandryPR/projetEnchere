@@ -54,6 +54,17 @@ public class Categorie {
 		this.articlesVendus = articlesVendus;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Categorie [noCategorie=");
+		builder.append(noCategorie);
+		builder.append(", libelle=");
+		builder.append(libelle);
+		builder.append("]");
+		return builder.toString();
+	}
+
 	
 	
 	
