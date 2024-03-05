@@ -28,6 +28,7 @@ public class Utilisateur implements UserDetails {
 	String pseudo;
 	String nom;
 	String prenom;
+	String confirmation;
 	@NotBlank
 	@Email
 	String email;
@@ -300,6 +301,14 @@ public class Utilisateur implements UserDetails {
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	public String getConfirmation() {
+		return confirmation;
+	}
+
+	public void setConfirmation(String confirmation) {
+		this.confirmation = confirmation;
 	}
 
 	
