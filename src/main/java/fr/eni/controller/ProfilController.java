@@ -30,6 +30,7 @@ public class ProfilController {
                 model.addAttribute("prenom", utilisateur.getPrenom());
                 model.addAttribute("pseudo", utilisateur.getPseudo());
                 model.addAttribute("email", utilisateur.getEmail());
+                model.addAttribute("motDePasse", "*******");
                 model.addAttribute("telephone", utilisateur.getTelephone());
                 model.addAttribute("rue", utilisateur.getRue());
                 model.addAttribute("codePostal", utilisateur.getCodePostal());

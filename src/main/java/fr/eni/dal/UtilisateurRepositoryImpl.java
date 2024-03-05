@@ -151,7 +151,7 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
 				utilisateur.setNoUtilisateur(keyHolder.getKey().intValue());
 		}else {
 			String sql = "update UTILISATEURS set pseudo=?,nom=?,prenom=?,email=?,telephone=?, rue=?,code_postal=?, ville=?, mot_de_passe=?,credit=?,administrateur=? where no_utilisateur=?";
-			int nbLignes = jdbcTemplate.update(sql, utilisateur.getPseudo(), utilisateur.getNom(), utilisateur.getPrenom(), utilisateur.getEmail(), utilisateur.getTelephone(), utilisateur.getRue(), utilisateur.getCodePostal(), utilisateur.getVille(), utilisateur.getMotDePasse(), utilisateur.getCredit(), utilisateur.isAdmin(), utilisateur.getNoUtilisateur());
+			int nbLignes = jdbcTemplate.update(sql, utilisateur.getPseudo(), utilisateur.getNom(), utilisateur.getPrenom(), utilisateur.getEmail(), utilisateur.getTelephone(), utilisateur.getRue(), utilisateur.getCodePostal(), utilisateur.getVille(), passwordEncoder.encode(utilisateur.getMotDePasse()) , utilisateur.getCredit(), utilisateur.isAdmin(), utilisateur.getNoUtilisateur());
 
 			
 		}
