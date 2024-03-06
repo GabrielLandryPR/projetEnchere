@@ -1,5 +1,6 @@
 package fr.eni.bll;
 
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -61,5 +62,8 @@ public class UtilisateurServiceImpl implements UtilisateurService{
 		}
 	}
 	
+	public List<Utilisateur> afficherAllUsers(){
+		return this.utilisateurRepository.findAllUsers();
+	}
 
 }
