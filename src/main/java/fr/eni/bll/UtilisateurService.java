@@ -1,5 +1,6 @@
 package fr.eni.bll;
 
+import java.util.List;
 import java.util.Optional;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import fr.eni.bo.Utilisateur;
@@ -15,5 +16,7 @@ public interface UtilisateurService {
 	void deleteUser(int id);
 	
 	Optional<Utilisateur> consulterUserId(int id);
+	
+	public List<Utilisateur> afficherAllUsers();
 
 }
