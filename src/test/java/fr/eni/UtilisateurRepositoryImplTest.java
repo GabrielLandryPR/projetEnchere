@@ -23,14 +23,14 @@ import fr.eni.dal.UtilisateurRepositoryImpl;
 @SpringBootTest
 public class UtilisateurRepositoryImplTest {
 	@Autowired
-	private UtilisateurRepositoryImpl UtilisateurRepository;
+	private UtilisateurRepositoryImpl utilisateurRepository;
 	@Autowired
 	private PasswordEncoder passwordEncoder; // Assurez-vous que l'encodeur est injecté correctement
 
 	@Test
 	@DisplayName("Test find all users")
 	void testFindAllUsers() {
-		List<Utilisateur> utilisateurs = UtilisateurRepository.findAllUsers();
+		List<Utilisateur> utilisateurs = utilisateurRepository.findAllUsers();
 		System.out.println(utilisateurs);
 	}
 
@@ -38,7 +38,7 @@ public class UtilisateurRepositoryImplTest {
 	@DisplayName("Test find by id")
 	void testFindUserById() {
 		int idUser = 21;
-		Optional<Utilisateur> optUser = UtilisateurRepository.findUserById(idUser);
+		Optional<Utilisateur> optUser = utilisateurRepository.findUserById(idUser);
 		assertTrue(optUser.isPresent());
 		assertEquals(idUser, optUser.get().getNoUtilisateur());
 		System.out.println(optUser);
@@ -67,7 +67,7 @@ public class UtilisateurRepositoryImplTest {
     public void testDeleteUser() {
     	int noUtilisateur = 30;
 		try {
-			UtilisateurRepository.deleteUser(noUtilisateur);
+			utilisateurRepository.deleteUser(noUtilisateur);
 		}catch(Exception exc) {
 			fail();}
 		}
@@ -82,7 +82,7 @@ public class UtilisateurRepositoryImplTest {
 		Utilisateur utilisateur = new Utilisateur("pseudo1", "nom1", "prenom1", "email", 10, "rue", 1, "ville", "mdp",
 				false);
 		utilisateur.setNoUtilisateur(7);
-		UtilisateurRepository.saveUser(utilisateur);
+		utilisateurRepository.saveUser(utilisateur);
 		// Assurez-vous d'ajouter d'autres assertions pour tester le comportement
 		// attendu
 		assertNotNull(utilisateur);
