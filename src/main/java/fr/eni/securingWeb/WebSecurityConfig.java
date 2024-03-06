@@ -18,7 +18,6 @@ public class WebSecurityConfig {
 		return httpSecurity
 				.authorizeHttpRequests(
 					auth->{
-						auth.requestMatchers("/formLog").authenticated();
 						auth.requestMatchers("/monProfil").authenticated();
 						auth.anyRequest().permitAll();
 					})

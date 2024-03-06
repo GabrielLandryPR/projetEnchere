@@ -9,11 +9,11 @@ public class Retrait {
 	String ville;
 	
 	//****Association****
-	private ArticleVendu articleVendu;
+	private Article articleVendu;
 	
 	
 	//****Constructeurs
-	public Retrait(String rue, int code_postale, String ville, ArticleVendu articleVendu) {
+	public Retrait(String rue, int code_postale, String ville, Article articleVendu) {
 		this.rue = rue;
 		this.code_postale = code_postale;
 		this.ville = ville;
@@ -53,11 +53,11 @@ public class Retrait {
 		this.ville = ville;
 	}
 
-	public ArticleVendu getArticleVendu() {
+	public Article getArticleVendu() {
 		return articleVendu;
 	}
 
-	public void setArticleVendu(ArticleVendu articleVendu) {
+	public void setArticleVendu(Article articleVendu) {
 		this.articleVendu = articleVendu;
 	}
 

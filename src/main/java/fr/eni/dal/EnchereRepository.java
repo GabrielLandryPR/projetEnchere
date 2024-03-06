@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import fr.eni.bo.Enchere;
+import fr.eni.exception.EnchereNotPresentException;
 
 public interface EnchereRepository {
 	
@@ -11,9 +12,12 @@ public interface EnchereRepository {
 	
 	Optional<Enchere> findEnchereById(int id);
 	
-	Enchere SaveEnchere(Enchere enchere);
+	Optional<Enchere> SaveEnchere(Enchere enchere);
 	
-	void DeleteEnchere(Enchere enchere);
+	void deleteEnchere (int noArticle) throws EnchereNotPresentException;
+	
+	Optional<Enchere> findEnchereBy2Id(int idUser, int idArticle);
+	
 	
 	
 
