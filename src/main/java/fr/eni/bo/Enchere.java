@@ -10,7 +10,9 @@ public class Enchere {
 	//****Variable
 	Date dateEnchere;
 	int montant_enchere;
+	int idEnchere;
 	
+
 	private int idArticle;
 	private int idUtilisateur;
 	
@@ -29,10 +31,10 @@ public class Enchere {
 	}
 
 	//Constructeurs plein
-	public Enchere(Date dateEnchere, int montant_enchere, int articleVendu, int utilisateur) {
+	public Enchere(int utilisateur,int article, Date dateEnchere, int montant_enchere) {
 		this.dateEnchere = dateEnchere;
 		this.montant_enchere = montant_enchere;
-		this.idArticle = articleVendu;
+		this.idArticle = article;
 		this.idUtilisateur = utilisateur;
 	}
 
@@ -57,40 +59,46 @@ public class Enchere {
 	}
 
 
-	public int getArticleVendu() {
+	public int getIdArticle() {
 		return idArticle;
 	}
 
 
-	public void setArticleVendu(int articleVendu) {
-		this.idArticle = articleVendu;
+	public void setIdArticle(int article) {
+		this.idArticle = article;
 	}
 
 
-	public int getUtilisateur() {
+	public int getIdUtilisateur() {
 		return idUtilisateur;
 	}
 
 
-	public void setUtilisateur(int utilisateur) {
+	public void setIdUtilisateur(int utilisateur) {
 		this.idUtilisateur = utilisateur;
 	}
 
 
-	public void setUtilisateur(Optional<Utilisateur> findUserById) {
+	public void setIdUtilisateur(Optional<Utilisateur> findUserById) {
 		this.idUtilisateur = idUtilisateur;
 		
+	}
+
+	public int getIdEnchere() {
+		return idEnchere;
+	}
+
+
+	public void setIdEnchere(int idEnchere) {
+		this.idEnchere = idEnchere;
 	}
 
 
 	@Override
 	public String toString() {
-		return "Enchere [dateEnchere=" + dateEnchere + ", montant_enchere=" + montant_enchere + ", articleVendu="
-				+ idArticle + ", utilisateur=" + idUtilisateur + "]";
+		return "Enchere [dateEnchere=" + dateEnchere + ", montant_enchere=" + montant_enchere + ", idEnchere="
+				+ idEnchere + ", idArticle=" + idArticle + ", idUtilisateur=" + idUtilisateur + "]";
 	}
-	
-	
 
-	
 	
 }

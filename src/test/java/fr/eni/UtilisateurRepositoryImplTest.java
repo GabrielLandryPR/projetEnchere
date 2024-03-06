@@ -1,3 +1,4 @@
+
 package fr.eni;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -15,7 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import fr.eni.bo.ArticleVendu;
+import fr.eni.bo.Article;
 import fr.eni.bo.Enchere;
 import fr.eni.bo.Utilisateur;
 import fr.eni.dal.UtilisateurRepositoryImpl;
@@ -75,7 +76,7 @@ public class UtilisateurRepositoryImplTest {
 	@Test // Finir le test unitaire avant de push sur git
 	@DisplayName("Test SAVEUSER")
 	void testSave() {
-		List<ArticleVendu> articlesVendus = new ArrayList<>();
+		List<Article> articlesVendus = new ArrayList<>();
 		List<Enchere> encheres = new ArrayList<>();
 
 		// Création de l'utilisateur en passant les listes vides

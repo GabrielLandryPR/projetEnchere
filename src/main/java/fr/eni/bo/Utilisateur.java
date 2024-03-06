@@ -44,7 +44,7 @@ public class Utilisateur implements UserDetails {
 	
 	
 	//****Association****
-	List<ArticleVendu> articleVendus;
+	List<Article> articleVendus;
 	List<Enchere> encheres;
 	
 	@Override
@@ -55,14 +55,6 @@ public class Utilisateur implements UserDetails {
 
 	// Constructeurs, getters et setters
 	    
-	public List<ArticleVendu> getArticlesVendus() {
-	        return articleVendus;
-	    }
-
-	public void setArticlesVendus(List<ArticleVendu> articlesVendus) {
-	        this.articleVendus = articlesVendus;
-	    }
-
 
 	//****Constructeur par défaut 
 	public Utilisateur() {
@@ -87,49 +79,6 @@ public class Utilisateur implements UserDetails {
 	}
 	
 	
-//	//****Constructeur sans ID
-//	public Utilisateur(String pseudo, String nom, String prenom, String email, int telephone, String rue,
-//			int codePostal, String ville, String motDePasse, Integer credit, boolean isAdmin,
-//			List<ArticleVendu> articleVendus, List<Enchere> encheres) {
-//		super();
-//		this.pseudo = pseudo;
-//		this.nom = nom;
-//		this.prenom = prenom;
-//		this.email = email;
-//		this.telephone = telephone;
-//		this.rue = rue;
-//		this.codePostal = codePostal;
-//		this.ville = ville;
-//		this.motDePasse = motDePasse;
-//		this.credit = credit;
-//		this.isAdmin = isAdmin;
-//		this.articleVendus = articleVendus;
-//		this.encheres = encheres;
-//	}
-
-//	//Constructeur avec articleVendus 
-//	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, int telephone,
-//			String rue, int codePostal, String ville, String motDePasse, Integer credit, boolean isAdmin,
-//			List<ArticleVendu> articlesVendus) {
-//		this.noUtilisateur = noUtilisateur;
-//		this.pseudo = pseudo;
-//		this.nom = nom;
-//		this.prenom = prenom;
-//		this.email = email;
-//		this.telephone = telephone;
-//		this.rue = rue;
-//		this.codePostal = codePostal;
-//		this.ville = ville;
-//		this.motDePasse = motDePasse;
-//		this.credit = credit;
-//		this.isAdmin = isAdmin;
-//		this.articleVendus = articlesVendus;
-//	}
-	
-	
-	/*
-	 * Constructeur pour insert bdd
-	 */
 	public Utilisateur(String pseudo, String nom, String prenom, String email, int telephone, String rue,
 			int codePostal, String ville, String motDePasse, boolean isAdmin) {
 		super();
@@ -221,11 +170,8 @@ public class Utilisateur implements UserDetails {
 		this.isAdmin = isAdmin;
 	}
 
-	public List<ArticleVendu> getArticleVendus() {
-		return articleVendus;
-	}
 
-	public void setArticleVendus(List<ArticleVendu> articleVendus) {
+	public void setArticleVendus(List<Article> articleVendus) {
 		this.articleVendus = articleVendus;
 	}
 
@@ -236,19 +182,26 @@ public class Utilisateur implements UserDetails {
 	public void setEncheres(List<Enchere> encheres) {
 		this.encheres = encheres;
 	}
+	public List<Article> getArticles() {
+        return articleVendus;
+    }
+
+public void setArticles(List<Article> articlesVendus) {
+        this.articleVendus = articlesVendus;
+    }
 
 	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Utilisateur [getArticlesVendus()=").append(getArticlesVendus()).append(", getNoUtilisateur()=")
+		builder.append("Utilisateur [getArticlesVendus()=").append(getArticles()).append(", getNoUtilisateur()=")
 				.append(getNoUtilisateur()).append(", getPseudo()=").append(getPseudo()).append(", getNom()=")
 				.append(getNom()).append(", getPrenom()=").append(getPrenom()).append(", getEmail()=")
 				.append(getEmail()).append(", getTelephone()=").append(getTelephone()).append(", getRue()=")
 				.append(getRue()).append(", getCodePostal()=").append(getCodePostal()).append(", getVille()=")
 				.append(getVille()).append(", getMotDePasse()=").append(getMotDePasse()).append(", getCredit()=")
-				.append(getCredit()).append(", isAdmin()=").append(isAdmin()).append(", getArticleVendus()=")
-				.append(getArticleVendus()).append(", getEncheres()=").append(getEncheres()).append("]");
+				.append(getCredit()).append(", isAdmin()=").append(isAdmin()).append(", getArticlesVendus()=")
+				.append(getArticles()).append(", getEncheres()=").append(getEncheres()).append("]");
 		return builder.toString();
 	}
 
