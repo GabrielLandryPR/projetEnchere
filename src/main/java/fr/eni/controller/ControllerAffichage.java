@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import fr.eni.bll.UtilisateurService;
 import fr.eni.bo.Utilisateur;
 
-
 @Controller
 public class ControllerAffichage {
 	
@@ -27,11 +26,7 @@ public class ControllerAffichage {
     public String redirectToIndex() {
         return "redirect:/";
     }
-	
-	@GetMapping("/newSell")
-	public String affichageNewSell() {
-		return "newSell";
-	}
+
 	
 	@GetMapping("/detailsVente")
 	public String affichagedetailsVente() {
