@@ -7,4 +7,6 @@ import fr.eni.bo.Categorie;
 public interface CategorieService {
 
 	public List<Categorie> findAll();
+	
+	public Categorie findById(int id);
 }

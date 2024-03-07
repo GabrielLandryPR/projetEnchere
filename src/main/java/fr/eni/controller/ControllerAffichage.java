@@ -2,6 +2,9 @@ package fr.eni.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+
+import fr.eni.bo.Article;
 
 @Controller
 public class ControllerAffichage {
@@ -10,11 +13,7 @@ public class ControllerAffichage {
     public String redirectToIndex() {
         return "redirect:/";
     }
-	
-	@GetMapping("/newSell")
-	public String affichageNewSell() {
-		return "newSell";
-	}
+
 	
 	@GetMapping("/detailsVente")
 	public String affichagedetailsVente() {

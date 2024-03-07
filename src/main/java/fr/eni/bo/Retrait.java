@@ -5,7 +5,7 @@ public class Retrait {
 	
 	//****Variables****
 	String rue;
-	int code_postale;
+	int code_postal;
 	String ville;
 	
 	//****Association****
@@ -15,7 +15,7 @@ public class Retrait {
 	//****Constructeurs
 	public Retrait(String rue, int code_postale, String ville, Article articleVendu) {
 		this.rue = rue;
-		this.code_postale = code_postale;
+		this.code_postal = code_postale;
 		this.ville = ville;
 		this.articleVendu = articleVendu;
 	}
@@ -23,9 +23,12 @@ public class Retrait {
 	//****Constructeur sans article vendu
 	public Retrait(String rue, int code_postale, String ville) {
 		this.rue = rue;
-		this.code_postale = code_postale;
+		this.code_postal = code_postale;
 		this.ville = ville;
 	}
+	public Retrait() {
+	}
+
 
 	
 	//****Getters et Setters 
@@ -37,12 +40,12 @@ public class Retrait {
 		this.rue = rue;
 	}
 
-	public int getCode_postale() {
-		return code_postale;
+	public int getCode_postal() {
+		return code_postal;
 	}
 
-	public void setCode_postale(int code_postale) {
-		this.code_postale = code_postale;
+	public void setCode_postal(int code_postale) {
+		this.code_postal = code_postale;
 	}
 
 	public String getVille() {

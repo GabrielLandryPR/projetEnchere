@@ -27,7 +27,6 @@ public class ArticleRepositoryImpl implements ArticleRepository {
 
 	public ArticleRepositoryImpl(UtilisateurRepository utilisateurRepository, JdbcTemplate jdbcTemplate,
 			NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
-		super();
 		this.utilisateurRepository = utilisateurRepository;
 		this.jdbcTemplate = jdbcTemplate;
 		this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
@@ -60,6 +59,11 @@ public class ArticleRepositoryImpl implements ArticleRepository {
 	@Override
 	public Optional<Article> findArticleById(int id) {
 		String sql = "SELECT no_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie FROM ARTICLES WHERE no_article = ?";
+//		String sql2 = "SELECT a*, c.libelle, u.pseudo FROM ARTICLES a "
+//				+ "INNER JOIN UTILISATEURS u ON a.no_utilisateur = u.no_utilisateur "
+//				+ "INNER JOIN CATEGORIES c ON a.no_categorie = c.no_categorie "
+//				+ "WHERE a.no_article = ?";
+		
 		RowMapper<Article> rowmap = new RowMapper<>() {
 
 			@Override

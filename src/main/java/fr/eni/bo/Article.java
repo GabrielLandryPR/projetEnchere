@@ -2,38 +2,42 @@ package fr.eni.bo;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 public class Article {
-	
-	//****Variables****
+
+	// ****Variables****
 	int noArticle;
 	String nomArticle;
 	String description;
-	Date debutEncheres;
-	Date finEncheres;
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
+	private Date debutEncheres;
+
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
+	private Date finEncheres;
 	int miseAPrix;
 	int prixVente;
-	int etatVente;
-	
+	String etatVente = "pas en vente";
+
+	private byte[] image;
 	private int idUtilisateur;
 	private int idCategorie;
+	private Categorie categorie;
 	private Retrait retrait;
 	List<Enchere> encheres;
-	
-	
+
 	public Article(List<Enchere> encheres) {
 		this.encheres = encheres;
 	}
 
-	
-	//****Constructeur par défaut 
+	// ****Constructeur par défaut
 	public Article() {
 		super();
 	}
-	
-	public Article(String nomArticle, String description, Date debutEncheres, Date finEncheres,
-			int miseAPrix, int prixVente, int idUtilisateur, int idCategorie, int etatVente) {
+
+	public Article(String nomArticle, String description, Date debutEncheres, Date finEncheres, int miseAPrix,
+			int prixVente, int idUtilisateur, int idCategorie, String etatVente) {
 		super();
 		this.nomArticle = nomArticle;
 		this.description = description;
@@ -45,7 +49,6 @@ public class Article {
 		this.idCategorie = idCategorie;
 		this.etatVente = etatVente;
 	}
-
 
 	@Override
 	public String toString() {
@@ -60,10 +63,9 @@ public class Article {
 		return builder.toString();
 	}
 
-
-	//****Constructeur sans id  
-	public Article(String nomArticle, String description, Date debutEncheres, Date finEncheres,
-			int miseAPrix, int prixVente, int etatVente, List<Enchere> encheres, int idUtilisateur) {
+	// ****Constructeur sans id
+	public Article(String nomArticle, String description, Date debutEncheres, Date finEncheres, int miseAPrix,
+			int prixVente, String etatVente, List<Enchere> encheres, int idUtilisateur) {
 		this.nomArticle = nomArticle;
 		this.description = description;
 		this.debutEncheres = debutEncheres;
@@ -74,11 +76,10 @@ public class Article {
 		this.encheres = encheres;
 		this.idUtilisateur = idUtilisateur;
 	}
-	
-	//****Constructeur plein
-	public Article(int noArticle, String nomArticle, String description, Date debutEncheres,
-			Date finEncheres, int miseAPrix, int prixVente, int etatVente, List<Enchere> encheres,
-			int idUtilisateur) {
+
+	// ****Constructeur plein
+	public Article(int noArticle, String nomArticle, String description, Date debutEncheres, Date finEncheres,
+			int miseAPrix, int prixVente, String etatVente, List<Enchere> encheres, int idUtilisateur) {
 		this.noArticle = noArticle;
 		this.nomArticle = nomArticle;
 		this.description = description;
@@ -90,11 +91,10 @@ public class Article {
 		this.encheres = encheres;
 		this.idUtilisateur = idUtilisateur;
 	}
-	
-	//****Constructeur plein
-	public Article(int noArticle, String nomArticle, String description, Date debutEncheres,
-			Date finEncheres, int miseAPrix, int prixVente, int etatVente, int idCategorie,
-			List<Enchere> encheres, int idUtilisateur) {
+
+	// ****Constructeur plein
+	public Article(int noArticle, String nomArticle, String description, Date debutEncheres, Date finEncheres,
+			int miseAPrix, int prixVente, String etatVente, int idCategorie, List<Enchere> encheres, int idUtilisateur) {
 		this.noArticle = noArticle;
 		this.nomArticle = nomArticle;
 		this.description = description;
@@ -107,10 +107,10 @@ public class Article {
 		this.encheres = encheres;
 		this.idUtilisateur = idUtilisateur;
 	}
-	
-	public Article(int noArticle, String nomArticle, String description, Date debutEncheres,
-			Date finEncheres, int miseAPrix, int prixVente, int etatVente, int idCategorie,
-			List<Enchere> encheres, Retrait retrait, int idUtilisateur) {
+
+	public Article(int noArticle, String nomArticle, String description, Date debutEncheres, Date finEncheres,
+			int miseAPrix, int prixVente, String etatVente, int idCategorie, List<Enchere> encheres, Retrait retrait,
+			int idUtilisateur) {
 		this.noArticle = noArticle;
 		this.nomArticle = nomArticle;
 		this.description = description;
@@ -125,12 +125,12 @@ public class Article {
 		this.idUtilisateur = idUtilisateur;
 	}
 
-	//******getters et setters******
+	// ******getters et setters******
 
 	public int getNoArticle() {
 		return noArticle;
 	}
-	
+
 	public void setNoArticle(int noArticle) {
 		this.noArticle = noArticle;
 	}
@@ -167,7 +167,7 @@ public class Article {
 		this.finEncheres = finEncheres;
 	}
 
-	public float getMiseAPrix() {
+	public int getMiseAPrix() {
 		return miseAPrix;
 	}
 
@@ -175,7 +175,7 @@ public class Article {
 		this.miseAPrix = miseAPrix;
 	}
 
-	public float getPrixVente() {
+	public int getPrixVente() {
 		return prixVente;
 	}
 
@@ -183,11 +183,11 @@ public class Article {
 		this.prixVente = prixVente;
 	}
 
-	public int getEtatVente() {
+	public String getEtatVente() {
 		return etatVente;
 	}
 
-	public void setEtatVente(int etatVente) {
+	public void setEtatVente(String etatVente) {
 		this.etatVente = etatVente;
 	}
 
@@ -204,7 +204,7 @@ public class Article {
 	}
 
 	public void setIdUtilisateur(int utilisateur) {
-		this.idUtilisateur = idUtilisateur;
+		this.idUtilisateur = utilisateur;
 	}
 
 	public int getIdCategorie() {
@@ -215,6 +215,32 @@ public class Article {
 		this.idCategorie = idCategorie;
 	}
 
-    
-	
+	public byte[] getImage() {
+		return image;
+	}
+
+	public void setImage(byte[] image) {
+		this.image = image;
+	}
+
+	public Categorie getCategorie() {
+		return categorie;
+	}
+
+	public void setCategorie(Categorie categorie) {
+		this.categorie = categorie;
+	}
+
+	public Retrait getRetrait() {
+		return retrait;
+	}
+
+	public void setRetrait(Retrait retrait) {
+		this.retrait = retrait;
+	}
+
+	public void setIdCategorie(int idCategorie) {
+		this.idCategorie = idCategorie;
+	}
+
 }

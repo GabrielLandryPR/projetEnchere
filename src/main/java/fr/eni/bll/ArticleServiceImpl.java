@@ -3,6 +3,7 @@ package fr.eni.bll;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.eni.bo.Article;
@@ -11,7 +12,7 @@ import fr.eni.exception.ArticleNotPresentException;
 
 @Service
 public class ArticleServiceImpl implements ArticleService{
-	
+	@Autowired
 	ArticleRepository articleRepository;
 
 	@Override

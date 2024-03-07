@@ -15,6 +15,10 @@ public class Categorie {
 	}
 	
 	//****Constructeur sans id
+	public Categorie(String libelle) {
+		this.libelle = libelle;
+	}
+
 	public Categorie(String libelle, List<Article> articlesVendus) {
 		this.libelle = libelle;
 		this.articlesVendus = articlesVendus;

@@ -27,7 +27,6 @@ public class UtilisateurServiceImpl implements UtilisateurService{
 	}
 	
 	
-	@Autowired
 	public UtilisateurServiceImpl(UtilisateurRepository utilisateurRepository) {
 		this.utilisateurRepository = utilisateurRepository;
 	}
