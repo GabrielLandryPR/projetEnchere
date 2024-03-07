@@ -21,9 +21,35 @@
 </head>
 
 <body>
-		<div th:replace="~{fragment/fragment-entete :: frag-entete}"></div>
+	<div th:replace="~{fragment/fragment-entete :: frag-entete}"></div>
 	<div class="container-fluid">
-		<h1>Detail vente</h1>
+		<h1 style="text-align: center;">Detail vente</h1>
+		<main class="center-main">
+			<ul class="flex-outer">
+				<li><label for="nomArticle">nom</label><input id="nomArticle" type="text" th:value="${a.nomArticle}" />
+				</li>
+				<li><label for="description">Description</label>
+					<textarea id="idSynopsis" cols="60" rows="3" th:text="${a.description}"></textarea>
+				</li>
+				<li><label for="categorie">Categorie</label><input id="categorie" type="text"
+						th:value="${a.libelleCategorie}" /></li>
+				<li><label for="prixVente">prixVente</label><input id="prixVente" type="text"
+						th:value="${a.prixVente}" /></li>
+				<li><label for="miseAPrix">miseAPrix</label><input id="miseAPrix" type="text"
+						th:value="${a.miseAPrix}" /></li>
+				<li th:if="${a.finEncheres != null}">
+					<label for="finEncheres">finEncheres</label>
+					<input id="finEncheres" type="text" th:value="${a.finEncheres}" />
+				</li>
+				<li th:if="${a.retrait != null}">
+					<label for="retrait">Retrait</label>
+					<input id="retrait" type="text" th:value="${a.retrait}" />
+				</li>
+				<!--  MANQUE REDIRECTION VERS LISTE UTILISATEUR DETAIL ///// ET FORMULAIRE "MA PROPOSITION" -->
+				<li><label for="vendeur">Vendeur</label><p class="row" id="vendeur" type="text"  th:text="${a.pseudoUtilisateur}"></p></li>
+			</ul>
+		</main>
+
 	</div>
 </body>
 

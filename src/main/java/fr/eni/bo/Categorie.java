@@ -7,7 +7,7 @@ public class Categorie {
 	int noCategorie;
 	String libelle;
 	
-	List<Article> articlesVendus;
+	List<Article> articles;
 
 	//****Constructeur par défaut 
 	public Categorie() {
@@ -19,17 +19,17 @@ public class Categorie {
 		this.libelle = libelle;
 	}
 
-	public Categorie(String libelle, List<Article> articlesVendus) {
+	public Categorie(String libelle, List<Article> articles) {
 		this.libelle = libelle;
-		this.articlesVendus = articlesVendus;
+		this.articles = articles;
 	}
 
 	//****Constructeur plein
-	public Categorie(int noCategorie, String libelle, List<Article> articlesVendus) {
+	public Categorie(int noCategorie, String libelle, List<Article> articles) {
 		super();
 		this.noCategorie = noCategorie;
 		this.libelle = libelle;
-		this.articlesVendus = articlesVendus;
+		this.articles = articles;
 	}
 
 	
@@ -51,11 +51,11 @@ public class Categorie {
 	}
 
 	public List<Article> getArticlesVendus() {
-		return articlesVendus;
+		return articles;
 	}
 
-	public void setArticlesVendus(List<Article> articlesVendus) {
-		this.articlesVendus = articlesVendus;
+	public void setArticlesVendus(List<Article> articles) {
+		this.articles = articles;
 	}
 
 	@Override

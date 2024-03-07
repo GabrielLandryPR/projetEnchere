@@ -17,6 +17,12 @@ public class UtilisateurServiceImpl implements UtilisateurService{
 
 
 	@Override
+	public List<Utilisateur> findAllUsers() {
+		List<Utilisateur> utilisateurs = this.utilisateurRepository.findAllUsers();
+		return utilisateurs;
+	}
+	
+	@Override
 	public Optional<Utilisateur> loadUserByUsername(String username) throws UsernameNotFoundException {
 		Optional<Utilisateur> user = utilisateurRepository.findByPseudo(username);
 		

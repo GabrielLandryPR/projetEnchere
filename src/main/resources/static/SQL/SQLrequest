@@ -1,0 +1,57 @@
+SET IDENTITY_INSERT UTILISATEURS ON;
+INSERT INTO UTILISATEURS (no_utilisateur, pseudo,nom,prenom,email,telephone,rue,code_postal,ville,mot_de_passe,credit,administrateur) VALUES (-1,'Deleted','Lenon','bob','bob.Lenon@eni.fr','0612345600','youtube','33333','rue','$2a$10$1yM1Jo/ghJerCskfK4g45uOw3pkI7FeVoymNW6T9fBVrhlEFE4QYG','0',1)
+SET IDENTITY_INSERT UTILISATEURS OFF;
+
+
+INSERT INTO UTILISATEURS (pseudo,nom,prenom,email,telephone,rue,code_postal,ville,mot_de_passe,credit,administrateur) VALUES ('user','eponge','bob','bob.eponge@eni.fr','0612345678','impasse','11111','mer','$2a$10$1yM1Jo/ghJerCskfK4g45uOw3pkI7FeVoymNW6T9fBVrhlEFE4QYG','0',1)
+INSERT INTO UTILISATEURS (pseudo,nom,prenom,email,telephone,rue,code_postal,ville,mot_de_passe,credit,administrateur) VALUES ('user2','bricoleur','bob','bob.bricoleur@eni.fr','0612345680','boulevard','22222','chantier','$2a$10$1yM1Jo/ghJerCskfK4g45uOw3pkI7FeVoymNW6T9fBVrhlEFE4QYG','0',1)
+INSERT INTO UTILISATEURS (pseudo,nom,prenom,email,telephone,rue,code_postal,ville,mot_de_passe,credit,administrateur) VALUES ('user3','marley','bob','bob.marley@eni.fr','0612345690','Jamaïque','33333','Nine Miles','$2a$10$1yM1Jo/ghJerCskfK4g45uOw3pkI7FeVoymNW6T9fBVrhlEFE4QYG','0',1)
+
+INSERT INTO CATEGORIES(libelle) VALUES
+('categorie1'),
+('categorie2'),
+('catego3');
+
+INSERT INTO ARTICLES (nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie, etat_vente)
+VALUES 
+    ('Montre en or', 'Montre de luxe en or avec bracelet en cuir, mouvement automatique.', '2024-03-01', '2024-03-10', 1000, NULL, 1, 1,'EC'),
+    ('Téléviseur intelligent', 'Téléviseur LED 4K Smart TV de 55 pouces avec connectivité Wi-Fi et applications intégrées.', '2024-03-02', '2024-03-11', 800, NULL, 2, 2,'VE'),
+    ('Roman policier', 'Best-seller du genre policier, plein de suspense et de rebondissements.', '2024-03-03', '2024-03-12', 20, NULL, 3, 3, 'CR'),
+    ('Machine à expresso', 'Machine à expresso automatique avec moulin intégré pour des cafés fraîchement moulus.', '2024-03-04', '2024-03-13', 300, NULL, 1, 1,'RE'),
+    ('Enceinte Bluetooth portable', 'Enceinte Bluetooth étanche avec une autonomie de batterie de 10 heures.', '2024-03-05', '2024-03-14', 50, NULL, 2, 2,'ET');
+
+INSERT INTO ENCHERES (no_utilisateur, no_article, date_enchere, montant_enchere) VALUES
+(1, 1, '01-01-2024 00:00:00', 50),
+(2, 2, '02-02-2024 11:11:11', 60),
+(3, 3, '03-03-2024 22:22:22', 70),
+(2, 4, '04-04-2024 12:34:56', 80),
+(3, 5, '05-05-2024 23:23:23', 90);
+
+SELECT * FROM UTILISATEURS;
+SELECT * FROM CATEGORIES;
+SELECT * FROM ARTICLES;
+SELECT * FROM ENCHERES;
+SELECT * FROM RETRAITS;
+
+
+DELETE FROM UTILISATEURS WHERE no_utilisateur = 4;
+DELETE FROM ENCHERES WHERE no_utilisateur = 2;
+
+
+ALTER TABLE UTILISATEURS DROP CONSTRAINT encheres_utilisateur_fk;
+ALTER TABLE ARTICLES DROP CONSTRAINT encheres_articles_fk;
+ALTER TABLE RETRAITS DROP CONSTRAINT retraits_articles_fk;
+ALTER TABLE ARTICLES DROP CONSTRAINT articles_utilisateur_fk;
+ALTER TABLE ARTICLES DROP CONSTRAINT articles_categories_fk;
+ALTER TABLE RETRAITS DROP CONSTRAINT retraits_articles_fk;
+
+
+DROP TABLE ENCHERES;
+DROP TABLE RETRAITS;
+DROP TABLE ARTICLES;
+DROP TABLE CATEGORIES;
+DROP TABLE UTILISATEURS;
+
+insert into ARTICLES(no_article, nom_article, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie) values(:noArticle, :nom_article, :dateDebutEnchere, :dateFinEnchere, :prixInitial, :prixVente, :noUtilisateur, :noCategorie)
+
+SELECT a.*, c.libelle, u.pseudo FROM ARTICLES a INNER JOIN UTILISATEURS u ON a.no_utilisateur = u.no_utilisateur INNER JOIN CATEGORIES c ON a.no_categorie = c.no_categorie WHERE a.no_article = ?;

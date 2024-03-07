@@ -12,8 +12,10 @@ import fr.eni.exception.ArticleNotPresentException;
 
 @Service
 public class ArticleServiceImpl implements ArticleService{
+
 	@Autowired
 	ArticleRepository articleRepository;
+
 
 	@Override
 	public List<Article> findAllArticles() {

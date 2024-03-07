@@ -21,12 +21,15 @@ public class Article {
 	String etatVente = "pas en vente";
 
 	private byte[] image;
+
 	private int idUtilisateur;
+	private String pseudoUtilisateur;
 	private int idCategorie;
 	private Categorie categorie;
+	private String libelleCategorie;
 	private Retrait retrait;
-	List<Enchere> encheres;
-
+	private List<Enchere> encheres;
+	
 	public Article(List<Enchere> encheres) {
 		this.encheres = encheres;
 	}
@@ -36,8 +39,9 @@ public class Article {
 		super();
 	}
 
-	public Article(String nomArticle, String description, Date debutEncheres, Date finEncheres, int miseAPrix,
-			int prixVente, int idUtilisateur, int idCategorie, String etatVente) {
+	public Article(String nomArticle, String description, Date debutEncheres, Date finEncheres,
+			int miseAPrix, int prixVente, int idUtilisateur, int idCategorie, String etatVente) {
+
 		super();
 		this.nomArticle = nomArticle;
 		this.description = description;
@@ -50,22 +54,10 @@ public class Article {
 		this.etatVente = etatVente;
 	}
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Article [getNoArticle()=").append(getNoArticle()).append(", getNomArticle()=")
-				.append(getNomArticle()).append(", getDescription()=").append(getDescription())
-				.append(", getDebutEncheres()=").append(getDebutEncheres()).append(", getFinEncheres()=")
-				.append(getFinEncheres()).append(", getMiseAPrix()=").append(getMiseAPrix()).append(", getPrixVente()=")
-				.append(getPrixVente()).append(", getEtatVente()=").append(getEtatVente()).append(", getEncheres()=")
-				.append(getEncheres()).append(", getIdUtilisateur()=").append(getIdUtilisateur())
-				.append(", getIdCategorie()=").append(getIdCategorie()).append("]");
-		return builder.toString();
-	}
 
-	// ****Constructeur sans id
-	public Article(String nomArticle, String description, Date debutEncheres, Date finEncheres, int miseAPrix,
-			int prixVente, String etatVente, List<Enchere> encheres, int idUtilisateur) {
+	//****Constructeur sans id  
+	public Article(String nomArticle, String description, Date debutEncheres, Date finEncheres,
+			int miseAPrix, int prixVente, String etatVente, List<Enchere> encheres, int idUtilisateur) {
 		this.nomArticle = nomArticle;
 		this.description = description;
 		this.debutEncheres = debutEncheres;
@@ -76,10 +68,11 @@ public class Article {
 		this.encheres = encheres;
 		this.idUtilisateur = idUtilisateur;
 	}
-
-	// ****Constructeur plein
-	public Article(int noArticle, String nomArticle, String description, Date debutEncheres, Date finEncheres,
-			int miseAPrix, int prixVente, String etatVente, List<Enchere> encheres, int idUtilisateur) {
+	
+	//****Constructeur plein
+	public Article(int noArticle, String nomArticle, String description, Date debutEncheres,
+			Date finEncheres, int miseAPrix, int prixVente, String etatVente, List<Enchere> encheres,
+			int idUtilisateur) {
 		this.noArticle = noArticle;
 		this.nomArticle = nomArticle;
 		this.description = description;
@@ -95,6 +88,7 @@ public class Article {
 	// ****Constructeur plein
 	public Article(int noArticle, String nomArticle, String description, Date debutEncheres, Date finEncheres,
 			int miseAPrix, int prixVente, String etatVente, int idCategorie, List<Enchere> encheres, int idUtilisateur) {
+
 		this.noArticle = noArticle;
 		this.nomArticle = nomArticle;
 		this.description = description;
@@ -203,8 +197,8 @@ public class Article {
 		return idUtilisateur;
 	}
 
-	public void setIdUtilisateur(int utilisateur) {
-		this.idUtilisateur = utilisateur;
+	public void setIdUtilisateur(int idUtilisateur) {
+		this.idUtilisateur = idUtilisateur;
 	}
 
 	public int getIdCategorie() {
@@ -239,8 +233,45 @@ public class Article {
 		this.retrait = retrait;
 	}
 
+
+
 	public void setIdCategorie(int idCategorie) {
 		this.idCategorie = idCategorie;
+	}
+	
+	public String getPseudoUtilisateur() {
+		return pseudoUtilisateur;
+	}
+
+
+	public void setPseudoUtilisateur(String pseudoUtilisateur) {
+		this.pseudoUtilisateur = pseudoUtilisateur;
+	}
+
+
+	public String getLibelleCategorie() {
+		return libelleCategorie;
+	}
+
+
+	public void setLibelleCategorie(String libelleCategorie) {
+		this.libelleCategorie = libelleCategorie;
+	}
+
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Article [getNoArticle()=").append(getNoArticle()).append(", getNomArticle()=")
+				.append(getNomArticle()).append(", getDescription()=").append(getDescription())
+				.append(", getDebutEncheres()=").append(getDebutEncheres()).append(", getFinEncheres()=")
+				.append(getFinEncheres()).append(", getMiseAPrix()=").append(getMiseAPrix()).append(", getPrixVente()=")
+				.append(getPrixVente()).append(", getEtatVente()=").append(getEtatVente()).append(", getEncheres()=")
+				.append(getEncheres()).append(", getIdUtilisateur()=").append(getIdUtilisateur())
+				.append(", getIdCategorie()=").append(getIdCategorie()).append(", getRetrait()=").append(getRetrait())
+				.append(", getPseudoUtilisateur()=").append(getPseudoUtilisateur()).append(", getLibelleCategorie()=")
+				.append(getLibelleCategorie()).append("]");
+		return builder.toString();
 	}
 
 }

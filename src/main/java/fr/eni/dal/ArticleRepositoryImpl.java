@@ -16,7 +16,6 @@ import org.springframework.stereotype.Repository;
 
 import fr.eni.bo.Article;
 import fr.eni.exception.ArticleNotPresentException;
-import fr.eni.exception.UserNotPresentException;
 
 @Repository
 public class ArticleRepositoryImpl implements ArticleRepository {
@@ -34,14 +33,15 @@ public class ArticleRepositoryImpl implements ArticleRepository {
 
 	@Override
 	public List<Article> findAllArticles() {
-		String sql = "SELECT * FROM ARTICLES";
+		String sql = "SELECT a.*, c.libelle, u.pseudo FROM ARTICLES a INNER JOIN UTILISATEURS u ON a.no_utilisateur = u.no_utilisateur INNER JOIN CATEGORIES c ON a.no_categorie = c.no_categorie";
 
-		RowMapper<Article> rowmap = new RowMapper<Article>() {
+		RowMapper<Article> rowmap = new RowMapper<>() {
 
 			@Override
 			public Article mapRow(ResultSet rs, int rowNum) throws SQLException {
 				Article article = new Article();
 				article.setNoArticle(rs.getInt("no_article"));
+				article.setNomArticle(rs.getString("nom_article"));
 				article.setDescription(rs.getString("description"));
 				article.setDebutEncheres(rs.getDate("date_debut_encheres"));
 				article.setFinEncheres(rs.getDate("date_fin_encheres"));
@@ -49,6 +49,9 @@ public class ArticleRepositoryImpl implements ArticleRepository {
 				article.setPrixVente(rs.getInt("prix_vente"));
 				article.setIdUtilisateur(rs.getInt("no_utilisateur"));
 				article.setCategorie(rs.getInt("no_categorie"));
+				article.setEtatVente("etat_vente");
+				article.setLibelleCategorie(rs.getString("libelle"));
+				article.setPseudoUtilisateur(rs.getString("pseudo"));
 				return article;
 			}
 		};
@@ -58,18 +61,17 @@ public class ArticleRepositoryImpl implements ArticleRepository {
 
 	@Override
 	public Optional<Article> findArticleById(int id) {
-		String sql = "SELECT no_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie FROM ARTICLES WHERE no_article = ?";
-//		String sql2 = "SELECT a*, c.libelle, u.pseudo FROM ARTICLES a "
-//				+ "INNER JOIN UTILISATEURS u ON a.no_utilisateur = u.no_utilisateur "
-//				+ "INNER JOIN CATEGORIES c ON a.no_categorie = c.no_categorie "
-//				+ "WHERE a.no_article = ?";
-		
+
+		//String sql = "SELECT no_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie FROM ARTICLES WHERE no_article = ?";
+		String sql = "SELECT a.*, c.libelle, u.pseudo FROM ARTICLES a INNER JOIN UTILISATEURS u ON a.no_utilisateur = u.no_utilisateur INNER JOIN CATEGORIES c ON a.no_categorie = c.no_categorie WHERE a.no_article = ?";
+
 		RowMapper<Article> rowmap = new RowMapper<>() {
 
 			@Override
 			public Article mapRow(ResultSet rs, int rowNum) throws SQLException {
 				Article article = new Article();
 				article.setNoArticle(rs.getInt("no_article"));
+				article.setNomArticle(rs.getString("nom_article"));
 				article.setDescription(rs.getString("description"));
 				article.setDebutEncheres(rs.getDate("date_debut_encheres"));
 				article.setFinEncheres(rs.getDate("date_fin_encheres"));
@@ -77,6 +79,8 @@ public class ArticleRepositoryImpl implements ArticleRepository {
 				article.setPrixVente(rs.getInt("prix_vente"));
 				article.setIdUtilisateur(rs.getInt("no_utilisateur"));
 				article.setCategorie(rs.getInt("no_categorie"));
+				article.setLibelleCategorie(rs.getString("libelle"));
+				article.setPseudoUtilisateur(rs.getString("pseudo"));
 				return article;
 			}
 		};
@@ -111,7 +115,7 @@ public class ArticleRepositoryImpl implements ArticleRepository {
 					new String[] {"noUtilisateur"});
 			article.setNoArticle(keyHolder.getKey().intValue());
 		} else {
-			String sql = "update ARTICLES set nomArticle=?,dateDebutEnchere=?,dateFinEnchere=?,prixInitial=?, prixVente=?,noUtilisateur=?, noCategorie=? where no_article=?";
+			String sql = "update ARTICLES set nomArticle=?, description=?, dateDebutEnchere=?, dateFinEnchere=?, prixInitial=?, prixVente=?, noUtilisateur=?, noCategorie=? where no_article=?";
 			int nbLignes = jdbcTemplate.update(sql, article.getNomArticle(),article.getDescription(),
 					article.getDebutEncheres(), article.getFinEncheres(), article.getMiseAPrix(),
 					article.getPrixVente(), article.getIdUtilisateur(), article.getIdCategorie(),

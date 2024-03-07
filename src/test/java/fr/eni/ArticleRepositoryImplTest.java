@@ -38,13 +38,13 @@ public class ArticleRepositoryImplTest {
 
 	}
 
-	/*@Test
+	@Test
 	@DisplayName("Test du saveArticle")
 	void testSaveArticle() {
-		Article article = new Article("test", "test description", Date.valueOf("2024-04-04"), Date.valueOf("2024-04-05"), 10, 20, 1, 1, 3);
+		Article article = new Article("test", "test description", Date.valueOf("2024-04-04"), Date.valueOf("2024-04-05"), 10, 20, 1, 1, "vendu");
 		System.out.println(article);
 		articleRepositoryImpl.saveArticle(article);
-	}*/
+	}
 
 	@Test
 	@DisplayName("Test du deleteArticle")
