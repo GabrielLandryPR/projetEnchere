@@ -21,11 +21,12 @@
 </head>
 
 <body>
-		<div class="row" th:replace="~{fragment/fragment-entete :: frag-entete}"></div>
-		<div th:if="${param.logout}"> Vous êtes déconnecté. </div>
+	<div class="row" th:replace="~{fragment/fragment-entete :: frag-entete}"></div>
+	<div th:if="${param.logout}"> Vous êtes déconnecté. </div>
 	<div class="container-fluid">
 		<h1 style="text-align: center;">Liste des enchères</h1>
-		<form action="" method="post">
+		<form action="/search" method="post">
+			<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
 			<label for="search">Recherche d'une enchère :</label><input name="search" type="text"
 				placeholder="search" />
 			<select class="form-select form-select-lg mb-3" aria-label="Large select example">
@@ -36,7 +37,7 @@
 				<option value="3">Sport</option>
 				<option value="3">Loisir</option>
 			</select>
-			<button type="submit" name="btn">Rechercher</button>
+			<button type="submit" name="btn"  >Rechercher</button>
 		</form>
 		<div>
 			<ul>
@@ -84,21 +85,23 @@
 			</ul>
 		</div>
 
-		<h1>Futur affichage des articles ...</h1>
-		<div>
-			<table>
-				<tbody>
-					<!-- Boucle pour afficher toutes les enchères -->
-					<!--        <tr th:each="e : ${encheres}">
-                    <td th:text="${e.genre.titre}"></td>
-                    <td th:text="${f.annee}"></td>
-                    <td th:text="${f.titre}"></td>
-                    <td th:text="${f.realisateur.prenom + ' ' + f.realisateur.nom}"></td>
-                </tr>
-            </tbody>
-        </table> -->
+		<div class="container text-center">
+			<div class="row">
+				<div th:each="a : ${articles}" class="col">
+					<div class="card">
+						<div class="card-body">
+							<a th:href="@{/detailsVente(idArt=${a.noArticle})}"><h5 class="card-title" th:text="${a.nomArticle}"></h5></a>
+							 <!--th:href="@{/detailsVente(idArt=${a.noArticle})}" -->
+							<p class="card-text" th:text="${a.miseAPrix}"></p>
+							<p class="card-text" th:text="${a.finEncheres}"></p>
+							<p class="card-text" th:text="${a.pseudoUtilisateur}"></p>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-	</div>
+
+
 </body>
 
 </html>

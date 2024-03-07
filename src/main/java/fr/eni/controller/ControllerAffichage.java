@@ -1,26 +1,64 @@
 package fr.eni.controller;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import fr.eni.bll.ArticleService;
+import fr.eni.bll.UtilisateurService;
+import fr.eni.bo.Article;
+import fr.eni.bo.Utilisateur;
 
 @Controller
 public class ControllerAffichage {
+
+	private ArticleService articleService;
+	private UtilisateurService utilisateurService;
+
+	public ControllerAffichage(ArticleService articleService, UtilisateurService utilisateurService) {
+		super();
+		this.articleService = articleService;
+		this.utilisateurService = utilisateurService;
+	}
+
+	@GetMapping({ "/encheres/", "/enchere/", "/encheres", "/enchere" })
+	public String redirectToIndex() {
+		return "redirect:/";
+	}
+
+	@GetMapping("/")
+	public String index(Model model) {
+		List<Article> articles = this.articleService.findAllArticles();
+		model.addAttribute("articles", articles);
+		System.out.println(articles);
+		return "index";
+	}
 	
-    @GetMapping({"/encheres/","/enchere/","/encheres","/enchere"})
-    public String redirectToIndex() {
-        return "redirect:/";
-    }
+	@GetMapping("/detailsVente")
+	public String detailsVente(@RequestParam ("idArt")int id, Model model) {
+		Optional<Article> article = this.articleService.findArticleById(id);
+		Article a = article.get();
+		System.err.println(a);
+		model.addAttribute("a", a);
+		return "detailsVente";
+	}
 	
+	@PostMapping("/search")
+	public String searchArticle() {
+		return "index";
+	}
+
 	@GetMapping("/newSell")
 	public String affichageNewSell() {
 		return "newSell";
 	}
-	
-	@GetMapping("/detailsVente")
-	public String affichagedetailsVente() {
-		return "detailsVente";
-	}
-	
+
+
 	@GetMapping("/remporterVente")
 	public String affichageremporterVente() {
 		return "remporterVente";

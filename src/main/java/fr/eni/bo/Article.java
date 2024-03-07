@@ -2,24 +2,26 @@ package fr.eni.bo;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 public class Article {
 	
 	//****Variables****
-	int noArticle;
-	String nomArticle;
-	String description;
-	Date debutEncheres;
-	Date finEncheres;
-	int miseAPrix;
-	int prixVente;
-	int etatVente;
-	
+	private int noArticle;
+	private String nomArticle;
+	private String description;
+	private Date debutEncheres;
+	private Date finEncheres;
+	private int miseAPrix;
+	private int prixVente;
+	private String etatVente;
+
+
 	private int idUtilisateur;
+	private String pseudoUtilisateur;
 	private int idCategorie;
+	private String libelleCategorie;
 	private Retrait retrait;
-	List<Enchere> encheres;
+	private List<Enchere> encheres;
 	
 	
 	public Article(List<Enchere> encheres) {
@@ -33,7 +35,7 @@ public class Article {
 	}
 	
 	public Article(String nomArticle, String description, Date debutEncheres, Date finEncheres,
-			int miseAPrix, int prixVente, int idUtilisateur, int idCategorie, int etatVente) {
+			int miseAPrix, int prixVente, int idUtilisateur, int idCategorie, String etatVente) {
 		super();
 		this.nomArticle = nomArticle;
 		this.description = description;
@@ -47,23 +49,12 @@ public class Article {
 	}
 
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Article [getNoArticle()=").append(getNoArticle()).append(", getNomArticle()=")
-				.append(getNomArticle()).append(", getDescription()=").append(getDescription())
-				.append(", getDebutEncheres()=").append(getDebutEncheres()).append(", getFinEncheres()=")
-				.append(getFinEncheres()).append(", getMiseAPrix()=").append(getMiseAPrix()).append(", getPrixVente()=")
-				.append(getPrixVente()).append(", getEtatVente()=").append(getEtatVente()).append(", getEncheres()=")
-				.append(getEncheres()).append(", getIdUtilisateur()=").append(getIdUtilisateur())
-				.append(", getIdCategorie()=").append(getIdCategorie()).append("]");
-		return builder.toString();
-	}
+
 
 
 	//****Constructeur sans id  
 	public Article(String nomArticle, String description, Date debutEncheres, Date finEncheres,
-			int miseAPrix, int prixVente, int etatVente, List<Enchere> encheres, int idUtilisateur) {
+			int miseAPrix, int prixVente, String etatVente, List<Enchere> encheres, int idUtilisateur) {
 		this.nomArticle = nomArticle;
 		this.description = description;
 		this.debutEncheres = debutEncheres;
@@ -77,7 +68,7 @@ public class Article {
 	
 	//****Constructeur plein
 	public Article(int noArticle, String nomArticle, String description, Date debutEncheres,
-			Date finEncheres, int miseAPrix, int prixVente, int etatVente, List<Enchere> encheres,
+			Date finEncheres, int miseAPrix, int prixVente, String etatVente, List<Enchere> encheres,
 			int idUtilisateur) {
 		this.noArticle = noArticle;
 		this.nomArticle = nomArticle;
@@ -93,7 +84,7 @@ public class Article {
 	
 	//****Constructeur plein
 	public Article(int noArticle, String nomArticle, String description, Date debutEncheres,
-			Date finEncheres, int miseAPrix, int prixVente, int etatVente, int idCategorie,
+			Date finEncheres, int miseAPrix, int prixVente, String etatVente, int idCategorie,
 			List<Enchere> encheres, int idUtilisateur) {
 		this.noArticle = noArticle;
 		this.nomArticle = nomArticle;
@@ -109,7 +100,7 @@ public class Article {
 	}
 	
 	public Article(int noArticle, String nomArticle, String description, Date debutEncheres,
-			Date finEncheres, int miseAPrix, int prixVente, int etatVente, int idCategorie,
+			Date finEncheres, int miseAPrix, int prixVente, String etatVente, int idCategorie,
 			List<Enchere> encheres, Retrait retrait, int idUtilisateur) {
 		this.noArticle = noArticle;
 		this.nomArticle = nomArticle;
@@ -183,11 +174,11 @@ public class Article {
 		this.prixVente = prixVente;
 	}
 
-	public int getEtatVente() {
+	public String getEtatVente() {
 		return etatVente;
 	}
 
-	public void setEtatVente(int etatVente) {
+	public void setEtatVente(String etatVente) {
 		this.etatVente = etatVente;
 	}
 
@@ -203,7 +194,7 @@ public class Article {
 		return idUtilisateur;
 	}
 
-	public void setIdUtilisateur(int utilisateur) {
+	public void setIdUtilisateur(int idUtilisateur) {
 		this.idUtilisateur = idUtilisateur;
 	}
 
@@ -214,6 +205,57 @@ public class Article {
 	public void setCategorie(int idCategorie) {
 		this.idCategorie = idCategorie;
 	}
+
+	
+	public Retrait getRetrait() {
+		return retrait;
+	}
+
+
+	public void setRetrait(Retrait retrait) {
+		this.retrait = retrait;
+	}
+
+
+	public void setIdCategorie(int idCategorie) {
+		this.idCategorie = idCategorie;
+	}
+	
+	public String getPseudoUtilisateur() {
+		return pseudoUtilisateur;
+	}
+
+
+	public void setPseudoUtilisateur(String pseudoUtilisateur) {
+		this.pseudoUtilisateur = pseudoUtilisateur;
+	}
+
+
+	public String getLibelleCategorie() {
+		return libelleCategorie;
+	}
+
+
+	public void setLibelleCategorie(String libelleCategorie) {
+		this.libelleCategorie = libelleCategorie;
+	}
+
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Article [getNoArticle()=").append(getNoArticle()).append(", getNomArticle()=")
+				.append(getNomArticle()).append(", getDescription()=").append(getDescription())
+				.append(", getDebutEncheres()=").append(getDebutEncheres()).append(", getFinEncheres()=")
+				.append(getFinEncheres()).append(", getMiseAPrix()=").append(getMiseAPrix()).append(", getPrixVente()=")
+				.append(getPrixVente()).append(", getEtatVente()=").append(getEtatVente()).append(", getEncheres()=")
+				.append(getEncheres()).append(", getIdUtilisateur()=").append(getIdUtilisateur())
+				.append(", getIdCategorie()=").append(getIdCategorie()).append(", getRetrait()=").append(getRetrait())
+				.append(", getPseudoUtilisateur()=").append(getPseudoUtilisateur()).append(", getLibelleCategorie()=")
+				.append(getLibelleCategorie()).append("]");
+		return builder.toString();
+	}
+
 
     
 	
