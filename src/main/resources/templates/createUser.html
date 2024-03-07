@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	
+	<title>Creation de compte</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" data-th-href="@{/css/entete.css}">
@@ -28,12 +29,14 @@
 			<div class="zoneForm col-md-6 mx-auto">
 				<h1 class="text-center">Création de compte</h1>
 				<form action="createUser" method="post" th:object="${utilisateur}">
+					<div th:replace="~{fragment/fragment-errors :: frag-errors}"></div>
 					<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
 					<div class="container">
 						<div class="row">
 							<div class="col-md-6 form-group">
 								<label for="pseudo">Pseudo</label>
-								<input type="text" class="form-control" th:field="*{pseudo}" />
+								<input type="text" class="form-control" th:field="${utilisateur.pseudo}" />
+								<div th:replace="~{fragment/fragment-error :: frag-error('pseudo')}"></div>
 							</div>
 							<div class="col-md-6"></div>
 						</div>
@@ -41,26 +44,31 @@
 							<div class="col-md-6 form-group">
 								<label for="nom">Nom</label>
 								<input type="text" class="form-control" value="mettre" th:field="*{nom}" />
+								<div th:replace="~{fragment/fragment-error :: frag-error('nom')}"></div>
 							</div>
 							<div class="col-md-6 form-group">
 								<label for="prénom">Prénom</label>
 								<input type="text" class="form-control" th:field="*{prenom}" />
+								<div th:replace="~{fragment/fragment-error :: frag-error('prenom')}"></div>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-6 form-group">
 								<label for="email">Email</label>
 								<input type="text" class="form-control" value="mettre" th:field="*{email}" />
+								<div th:replace="~{fragment/fragment-error :: frag-error('email')}"></div>
 							</div>
 							<div class="col-md-6 form-group">
 								<label for="telèphone">Téléphone</label>
-								<input type="text" class="form-control" th:field="*{telephone}" />
+								<input type="tel" class="form-control" th:field="*{telephone}" />
+								<div th:replace="~{fragment/fragment-error :: frag-error('telephone')}"></div>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-6 form-group">
 								<label for="rue">Rue</label>
 								<input type="text" class="form-control" value="mettre" th:field="*{rue}" />
+								<div th:replace="~{fragment/fragment-error :: frag-error('rue')}"></div>
 							</div>
 							<div class="col-md-6"></div>
 						</div>
@@ -68,20 +76,24 @@
 							<div class="col-md-6 form-group">
 								<label for="codePostal">Code Postal</label>
 								<input type="text" class="form-control" th:field="*{codePostal}" />
+								<div th:replace="~{fragment/fragment-error :: frag-error('codePostal')}"></div>
 							</div>
 							<div class="col-md-6 form-group">
 								<label for="ville">Ville</label>
 								<input type="text" class="form-control" value="mettre" th:field="*{ville}" />
+								<div th:replace="~{fragment/fragment-error :: frag-error('ville')}"></div>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-6 form-group">
 								<label for="motDePasse">Mot de passe</label>
-								<input type="text" class="form-control" th:field="*{motDePasse}" />
+								<input type="password" class="form-control" th:field="*{motDePasse}" />
+								<div th:replace="~{fragment/fragment-error :: frag-error('motDePasse')}"></div>
 							</div>
 							<div class="col-md-6 form-group">
 								<label for="confirmation">Confirmation</label>
-								<input type="text" class="form-control" />
+								<input type="password" class="form-control" />
+								<div th:replace="~{fragment/fragment-error :: frag-error('confirmation')}"></div>
 							</div>
 						</div>
 						<div class="row">

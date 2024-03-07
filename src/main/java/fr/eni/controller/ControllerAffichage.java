@@ -28,10 +28,7 @@ public class ControllerAffichage {
         return "redirect:/";
     }
 	
-	@GetMapping("/newSell")
-	public String affichageNewSell() {
-		return "newSell";
-	}
+	
 	
 	@GetMapping("/detailsVente")
 	public String affichagedetailsVente() {

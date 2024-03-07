@@ -23,11 +23,23 @@
 <body>
 	<div class="container-fluid">
 		<div th:replace="~{fragment/fragment-entete :: frag-entete}"></div>
-		<form action="">
-			<label for="">Article: <input type="text" /></label>
-			<label for="">Description: <input type="text" /></label>
-			<label for="">Catégorie: <input type="text" /></label>
-			<label for="">Photo de l'article<input type="text" /></label>
+		<form action="newSell" method="POST" th:object="${article}">
+			<div>
+				<label for="">Article: </label>
+				<input type="text" />
+			</div>
+			<div>
+				<label for="">Description:</label>
+				<input type="text" />
+			</div>
+			<div>
+			<label for="">Catégorie: </label>
+			<input type="text" />
+			</div>
+			<div>
+			<label for="">Photo de l'article</label>
+			<input type="text" />
+			</div>
 			<label for="quantity">Quantité: </label>
 			<input type="number" id="quantity" name="quantity" value="1" min="0" max="100000" step="1">
 			<label for="">Début de l'enchère: <input type="text" /></label>
