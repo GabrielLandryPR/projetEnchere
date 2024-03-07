@@ -1,0 +1,44 @@
+@charset "ISO-8859-1";
+
+@charset "ISO-8859-1";
+
+
+.container-fluid {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #343a40; /* Couleur de texte */
+}
+
+.cadre {
+	margin-top: 50px;
+	padding: 20px;
+	border: 2mm ridge rgb(64, 0, 128);
+	border-radius: 10%;
+	box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
+    background-color: #f8f9fa; /* Ajoute une couleur de fond */
+}
+
+.col-md-6 {
+	padding: 10px;
+}
+
+.col-md-6 i {
+	margin-right: 5px;
+}
+
+.col-md-6 span {
+	font-weight: bold;
+}
+
+h1 {
+	text-align: center;
+	color: rgb(64, 0, 128);
+	margin-bottom: 30px;
+}
+.col-md-6 a {
+    transition: color 0.3s ease; /* Ajoute une transition fluide */
+}
+
+.col-md-6 a:hover {
+    color: rgb(255, 0, 255); /* Couleur du lien au survol */
+    text-decoration: none;
+}
