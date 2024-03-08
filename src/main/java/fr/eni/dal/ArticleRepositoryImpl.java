@@ -43,8 +43,8 @@ public class ArticleRepositoryImpl implements ArticleRepository {
 				article.setNoArticle(rs.getInt("no_article"));
 				article.setNomArticle(rs.getString("nom_article"));
 				article.setDescription(rs.getString("description"));
-				article.setDebutEncheres(rs.getDate("date_debut_encheres"));
-				article.setFinEncheres(rs.getDate("date_fin_encheres"));
+				article.setDebutEncheres(rs.getDate("date_debut_encheres").toLocalDate());
+				article.setFinEncheres(rs.getDate("date_fin_encheres").toLocalDate());
 				article.setMiseAPrix(rs.getInt("prix_initial"));
 				article.setPrixVente(rs.getInt("prix_vente"));
 				article.setIdUtilisateur(rs.getInt("no_utilisateur"));
@@ -73,8 +73,8 @@ public class ArticleRepositoryImpl implements ArticleRepository {
 				article.setNoArticle(rs.getInt("no_article"));
 				article.setNomArticle(rs.getString("nom_article"));
 				article.setDescription(rs.getString("description"));
-				article.setDebutEncheres(rs.getDate("date_debut_encheres"));
-				article.setFinEncheres(rs.getDate("date_fin_encheres"));
+				article.setDebutEncheres(rs.getDate("date_debut_encheres").toLocalDate());
+				article.setFinEncheres(rs.getDate("date_fin_encheres").toLocalDate());
 				article.setMiseAPrix(rs.getInt("prix_initial"));
 				article.setPrixVente(rs.getInt("prix_vente"));
 				article.setIdUtilisateur(rs.getInt("no_utilisateur"));
@@ -115,7 +115,7 @@ public class ArticleRepositoryImpl implements ArticleRepository {
 					new String[] {"noUtilisateur"});
 			article.setNoArticle(keyHolder.getKey().intValue());
 		} else {
-			String sql = "update ARTICLES set nomArticle=?, description=?, dateDebutEnchere=?, dateFinEnchere=?, prixInitial=?, prixVente=?, noUtilisateur=?, noCategorie=? where no_article=?";
+			String sql = "update ARTICLES set nom_article=?, description=?, date_debut_encheres=?, date_fin_encheres=?, prix_initial=?, prix_vente=?, no_utilisateur=?, no_categorie=? where no_article=?";
 			int nbLignes = jdbcTemplate.update(sql, article.getNomArticle(),article.getDescription(),
 					article.getDebutEncheres(), article.getFinEncheres(), article.getMiseAPrix(),
 					article.getPrixVente(), article.getIdUtilisateur(), article.getIdCategorie(),

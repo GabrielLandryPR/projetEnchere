@@ -39,7 +39,7 @@ public class EnchereRepositoryImpl implements EnchereRepository{
 				Enchere enchere = new Enchere();
 				enchere.setIdUtilisateur(rs.getInt("no_utilisateur"));
 				enchere.setIdArticle(rs.getInt("no_article"));
-				enchere.setDateEnchere(rs.getDate("date_enchere"));
+				enchere.setDateEnchere(rs.getDate("date_enchere").toLocalDate());
 				enchere.setMontant_enchere(rs.getInt("montant_enchere"));
 				
 				return enchere;
@@ -60,7 +60,7 @@ public class EnchereRepositoryImpl implements EnchereRepository{
 				
 				enchere.setIdUtilisateur(rs.getInt("no_utilisateur"));
 				enchere.setIdArticle(rs.getInt("no_article"));
-				enchere.setDateEnchere(rs.getDate("date_enchere"));
+				enchere.setDateEnchere(rs.getDate("date_enchere").toLocalDate());
 				enchere.setMontant_enchere(rs.getInt("montant_enchere"));
 				return enchere;
 			}
@@ -121,7 +121,7 @@ public class EnchereRepositoryImpl implements EnchereRepository{
 				enchere.setIdUtilisateur(rs.getInt("no_utilisateur"));
 				enchere.setIdArticle(rs.getInt("no_article"));
 				enchere.setIdEnchere(rs.getInt("id_enchere"));
-				enchere.setDateEnchere(rs.getDate("date_enchere"));
+				enchere.setDateEnchere(rs.getDate("date_enchere").toLocalDate());
 				enchere.setMontant_enchere(rs.getInt("montant_enchere"));
 				return enchere;
 			}
