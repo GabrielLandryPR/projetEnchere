@@ -1,0 +1,50 @@
+@charset "ISO-8859-1";
+
+
+.container-fluid {
+	color: rgb(0, 0, 128);
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.cadre {
+	margin-top: 50px;
+	padding: 20px;
+	border: 2mm ridge rgb(64, 0, 128);
+	border-radius: 10%;
+	box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
+}
+
+.col-md-6 {
+	padding: 10px;
+}
+
+/* Style pour l'icône et le libellé */
+.col-md-6 i {
+	margin-right: 5px;
+	/* Ajoute un espace entre l'icône et le texte */
+}
+
+.col-md-6 span {
+	font-weight: bold;
+	/* Rend le texte en gras */
+}
+
+h1 {
+	text-align: center;
+	color: rgb(64, 0, 128);
+	margin-bottom: 30px;
+}
+
+.link-container {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	transform: translateY(-50%);
+	text-align: center;
+	padding: 20px;
+	background-color: #f8f9fa;
+}
+
+.row{
+	
+}

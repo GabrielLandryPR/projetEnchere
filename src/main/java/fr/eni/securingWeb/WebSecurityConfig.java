@@ -18,7 +18,6 @@ public class WebSecurityConfig implements WebMvcConfigurer {
 
 	@Bean
 	SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-		
 		return httpSecurity
 				.authorizeHttpRequests(
 					auth->{
@@ -28,15 +27,13 @@ public class WebSecurityConfig implements WebMvcConfigurer {
 				.formLogin( login->{
 					login.loginPage("/login");
 					login.failureUrl("/login?error=true");
-					login.defaultSuccessUrl("/monProfil");
-					
+					login.defaultSuccessUrl("/");
 				})
 				.logout( logout->{
 					logout.logoutUrl("/logout");
 					logout.logoutSuccessUrl("/?logout=true");
 					logout.deleteCookies("JSESSIONID"); 
 				})
-
 				.build()
 				;
 		

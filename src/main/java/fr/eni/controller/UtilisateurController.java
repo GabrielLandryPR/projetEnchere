@@ -48,17 +48,17 @@ public class UtilisateurController {
 		}
 	}
 
-	@GetMapping("/newSell")
-	public String affichageNewSell() {
-
-		return "newSell";
-	}
-
-	@PostMapping("/newSell")
-	public String ajouterVente(@ModelAttribute("article") Article article) {
-		articleService.saveArticle(article);
-		return "newSell";
-	}
+//	@GetMapping("/newSell")
+//	public String affichageNewSell() {
+//
+//		return "newSell";
+//	}
+//
+//	@PostMapping("/newSell")
+//	public String ajouterVente(@ModelAttribute("article") Article article) {
+//		articleService.saveArticle(article);
+//		return "newSell";
+//	}
 
 	@PostMapping("/monProfil")
 	public String supprimerProfil(@RequestParam("noUtilisateur") int noUtilisateur, HttpServletRequest request) {
@@ -67,8 +67,6 @@ public class UtilisateurController {
 		request.getSession().invalidate();
 		return "redirect:/";
 	}
-
-
 	
 	@PostMapping("/modifyProfil")
 	public String modifyUser(@Valid @ModelAttribute("utilisateur") Utilisateur utilisateur , BindingResult bindingResult,

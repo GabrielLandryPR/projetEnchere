@@ -8,6 +8,7 @@
 		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" data-th-href="@{/css/entete.css}">
 	<link rel="stylesheet" data-th-href="@{/css/general.css}">
+	<link rel="stylesheet" data-th-href="@{/css/detailsVente.css}">
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 		crossorigin="anonymous"></script>
@@ -21,37 +22,66 @@
 </head>
 
 <body>
-	<div th:replace="~{fragment/fragment-entete :: frag-entete}"></div>
+	<div class="row" th:replace="~{fragment/fragment-entete :: frag-entete}"></div>
 	<div class="container-fluid">
-		<h1 style="text-align: center;">Detail vente</h1>
-		<main class="center-main">
-			<ul class="flex-outer">
-				<li><span th:text="${a.nomArticle}"></span>
-				</li>
-				<li><textarea id="idSynopsis" cols="60" rows="3" th:text="${a.description}"></textarea></li>
-				<li><span id="categorie" type="text" th:text="${a.libelleCategorie}"></span></li>
-				<li><label for="prixVente">Prix actuel : </label><span id="prixVente" type="text" th:text="${a.prixVente}"></span></li>
-				<li><label for="miseAPrix">Mise à prix : </label><span id="miseAPrix" type="text" th:text="${a.miseAPrix}"></span></li>
-				<li th:if="${a.finEncheres != null}">
-					<span id="finEncheres" type="text" th:text="${a.finEncheres}"></span>
-				</li>
-				<li th:if="${a.retrait != null}">
-					<span id="retrait" type="text" th:text="${a.retrait}"></span>
-				</li>
-				<li><a th:href="@{/listeUtilisateurs/detail(noUtilisateur=${a.idUtilisateur})}"><span class="row" type="text"  th:text="${a.pseudoUtilisateur}"></span></a></li>
-			
-			
-			
-			<!--  FORMULAIRE "MA PROPOSITION" -->
-			<form action="/maProposition" method="post" th:object="${a}">
-				<input type="hidden" name="noArticle" th:value="${a.noArticle}"/>
-				<li><label for="prixVente">Ma proposition</label><input name="prixVente" type="number" step="10" th:field="${a.prixVente}"/></li> 
-				<li><button type="submit">Enchérir</button>
-				<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
-				</li>
-			</form>
-			</ul>
-		</main>
+		<div class="row">
+			<div class="cadre mx-auto">
+				<h1 style="text-align: center;">Detail vente</h1>
+				<div class="row align-items-center">
+					<div class="col-md-6" th:text="${a.nomArticle}"></div>
+				</div>
+				<div class="row align-items-center">
+					<div class="col-md-6">Description :</div>
+					<div class="col-md-6"><span th:text="${a.description}"></span></div>
+				</div>
+				<div class="row align-items-center">
+					<div class="col-md-6">Catégorie :</div>
+					<div class="col-md-6"><span th:text="${a.libelleCategorie}"></span></div>
+				</div>
+				<div class="row align-items-center">
+					<div class="col-md-6">Prix actuel :</div>
+					<div class="col-md-6"><span th:text="${a.prixVente}"></span></div>
+				</div>
+				<div class="row align-items-center">
+					<div class="col-md-6">Mise à prix :</div>
+					<div class="col-md-6"><span th:text="${a.miseAPrix}"></span></div>
+				</div>
+				<div class="row align-items-center" th:if="${a.finEncheres != null}">
+					<div class="col-md-6">Date de fin :</div>
+					<div class="col-md-6"><span th:text="${a.finEncheres}"></span></div>
+				</div>
+				<div class="row align-items-center" th:if="${a.retrait != null}">
+					<div class="col-md-6">Retrait :</div>
+					<div class="col-md-6"><span th:text="${a.retrait}"></span></div>
+				</div>
+				<div class="row align-items-center">
+					<div class="col-md-6">vendeur :</div>
+					<div class="col-md-6">
+						<a th:href="@{/listeUtilisateurs/detail(noUtilisateur=${a.idUtilisateur})}">
+							<div type="text" th:text="${a.pseudoUtilisateur}"></div>
+						</a>
+					</div>
+				</div>
+
+				<!--  FORMULAIRE "MA PROPOSITION" -->
+				<form action="/maProposition" method="post" th:object="${a}">
+					<input type="hidden" name="noArticle" th:value="${a.noArticle}" />
+					<div class="row  align-items-center">
+						<div class="col-md-6">Ma proposition :</div>
+						<div class="col-md-6">
+							<input name="prixVente" type="number" step="10" th:field="${a.prixVente}" />
+						</div>
+					</div>
+					<div class="row  align-items-center">
+						<div class="col-md-6"></div>
+						<div class="col-md-6">
+						<button type="submit">Enchérir</button>
+						</div>
+						<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+					</div>
+				</form>
+			</div>
+		</div>
 	</div>
 </body>
 

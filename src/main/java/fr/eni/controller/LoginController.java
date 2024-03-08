@@ -13,8 +13,6 @@ public class LoginController {
 	
 	private UtilisateurService utilisateurService;
 	private EnchereUserDetailService enchereUserDetailService;
-	
-	
 
 	public LoginController(UtilisateurService utilisateurService,EnchereUserDetailService enchereUserDetailService) {
 		this.utilisateurService = utilisateurService;

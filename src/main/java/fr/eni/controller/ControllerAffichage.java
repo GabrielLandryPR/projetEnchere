@@ -84,12 +84,6 @@ public class ControllerAffichage {
 		return "index";
 	}
 
-	@GetMapping("/newSell")
-	public String affichageNewSell() {
-		return "newSell";
-	}
-
-
 	@GetMapping("/remporterVente")
 	public String affichageremporterVente() {
 		return "remporterVente";
@@ -111,4 +105,5 @@ public class ControllerAffichage {
 		model.addAttribute("utilisateur", utilisateur);
 		return "listeUtilisateursDetail";
 	}
+	
 }
