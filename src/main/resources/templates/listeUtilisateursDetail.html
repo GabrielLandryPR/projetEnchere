@@ -9,6 +9,7 @@
 		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" data-th-href="@{/css/entete.css}">
 	<link rel="stylesheet" data-th-href="@{/css/general.css}">
+	<link rel="stylesheet" data-th-href="@{/css/userDetails.css}">
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 		crossorigin="anonymous"></script>
@@ -23,12 +24,48 @@
 
 <body>
 	<div class="row" th:replace="~{fragment/fragment-entete :: frag-entete}"></div>
-	<div><input type="text" name="pseudo" th:value="${utilisateur.pseudo}" /></div>
-	<div><input type="text" name="nom" th:value="${utilisateur.nom}" /></div>
-	<div><input type="text" name="prenom" th:value="${utilisateur.prenom}" /></div>
-	<div><input type="text" name="email" th:value="${utilisateur.email}" /></div>
-	<div><input type="text" name="telephone" th:value="${utilisateur.telephone}" /></div>
-	<div><input type="text" name="credit" th:value="${utilisateur.credit}" /></div>
+	<div class="link-container">
+		<a href="/listeUtilisateurs">Liste utilisateurs</a>
+	</div>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="cadre mx-auto col-md-6">
+				<h1>Détail utilisateur</h1>
+				<div class="row align-items-center">
+					<div class="col-md-6"><i class="fa-solid fa-image-portrait"></i> Pseudo :</div>
+					<div class="col-md-6"><span th:text="${utilisateur.pseudo}"></span></div>
+				</div>
+				<div class="row align-items-center">
+					<div class="col-md-6">Nom :</div>
+					<div class="col-md-6"><span th:text="${utilisateur.nom}"></span></div>
+				</div>
+				<div class="row align-items-center">
+					<div class="col-md-6">Prénom :</div>
+					<div class="col-md-6"><span th:text="${utilisateur.prenom}"></span></div>
+				</div>
+				<div class="row align-items-center">
+					<div class="col-md-6"><i class="fa-regular fa-envelope"></i> adresse mail :</div>
+					<div class="col-md-6"><span th:text="${utilisateur.email}"></span></div>
+				</div>
+				<div class="row align-items-center">
+					<div class="col-md-6"><i class="fa-solid fa-phone"></i> Tel :</div>
+					<div class="col-md-6">0<span th:text="${utilisateur.telephone}"></span></div>
+				</div>
+				<div class="row align-items-center">
+					<div class="col-md-6"><i class="fa-solid fa-coins"></i> Credit :</div>
+					<div class="col-md-6"><span th:text="${utilisateur.credit}"></span></div>
+				</div>
+				<div class="row align-items-center">
+					<div class="col-md-6"><i class="fa-solid fa-house-flag"></i> Adresse :</div>
+					<div class="col-md-6">
+						<span th:text="${utilisateur.rue}"></span>,
+						<span th:text="${utilisateur.ville}"></span>
+						(<span th:text="${utilisateur.codePostal}"></span>)
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 
 </html>

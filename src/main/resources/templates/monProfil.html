@@ -38,52 +38,62 @@
 						<div class="col-md-6 form-group">
 							<label for="nom">Pseudo</label>
 							<input class="form-control" type="text" th:field="${utilisateur.pseudo}" />
+							<div th:replace="~{fragment/fragment-error :: frag-error('pseudo')}"></div>
 						</div>
 						<div class="col-md-6 form-group">
 							<label for="email">Email</label>
 							<input class="form-control" type="text" th:field="${utilisateur.email}" />
+							<div th:replace="~{fragment/fragment-error :: frag-error('email')}"></div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-6 form-group">
 							<label for="nom">Nom</label>
 							<input class="form-control" type="text" th:field="${utilisateur.nom}" />
+							<div th:replace="~{fragment/fragment-error :: frag-error('nom')}"></div>
 						</div>
 						<div class="col-md-6 form-group">
 							<label for="prenom">Prénom</label>
 							<input class="form-control" type="text" th:field="${utilisateur.prenom}" />
+							<div th:replace="~{fragment/fragment-error :: frag-error('prenom')}"></div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-6 form-group">
 							<label for="telephone">Téléphone</label>
 							<input class="form-control" type="text" th:field="${utilisateur.telephone}" />
+							<div th:replace="~{fragment/fragment-error :: frag-error('telephone')}"></div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-6 form-group">
 							<label for="rue">Rue</label>
 							<input class="form-control" type="text" th:field="${utilisateur.rue}" />
+							<div th:replace="~{fragment/fragment-error :: frag-error('rue')}"></div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-6 form-group">
 							<label for="ville">Ville</label>
 							<input class="form-control" type="text" th:field="${utilisateur.ville}" />
+							<div th:replace="~{fragment/fragment-error :: frag-error('ville')}"></div>
 						</div>
 						<div class="col-md-6 form-group">
 							<label for="codePostal">Code Postal</label>
 							<input class="form-control" type="text" th:field="${utilisateur.codePostal}" />
+							<div th:replace="~{fragment/fragment-error :: frag-error('codePostal')}"></div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-6 form-group">
 							<label for="motDePasse">Mot de passe</label>
 							<input class="form-control" type="password" th:field="${utilisateur.motDePasse}" />
+							<div th:replace="~{fragment/fragment-error :: frag-error('motDePasse')}"></div>
 						</div>
 						<div class="col-md-6 form-group">
 							<label for="confirmation">Confirmation du mot de passe</label>
 							<input class="form-control" type="password" th:field="${utilisateur.confirmation}" placeholder="Confirmez votre mot de passe" />
+							<div th:replace="~{fragment/fragment-error :: frag-error('confirmation')}"></div>
 						</div>
 					</div>
 					<div class="row d-inline-flex p-2">

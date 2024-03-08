@@ -10,8 +10,12 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 public class Utilisateur implements UserDetails {
@@ -23,21 +27,30 @@ public class Utilisateur implements UserDetails {
 	//****Variables	
 	
 	int noUtilisateur;
-	@NotBlank
-	@Size(min=1)
+	@NotEmpty
+	@Size(min=4)
 	String pseudo;
+	@NotEmpty
+	@Size(min=1)
 	String nom;
+	@NotEmpty
+	@Size(min=1)
 	String prenom;
 	String confirmation;
-	@NotBlank
+	@NotEmpty
 	@Email
 	String email;
-	int telephone;
+	@NotNull
+	@Pattern(regexp = "[0]{1}[1-9]{1}[0-9]{8}")
+	String telephone; 
+	@NotBlank
 	String rue;
-	int codePostal;
-	String ville;
+	@NotNull
+	@Pattern(regexp="(F-)?((2[A|B])|[0-9]{2})[0-9]{3}")
+	String codePostal;
 	@NotBlank
 	@Size(min=1)
+	String ville;
 	String motDePasse;
 	Integer credit=0 ;
 	boolean isAdmin;
@@ -62,8 +75,8 @@ public class Utilisateur implements UserDetails {
 	}
 
 	//****Constructeurs****
-	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, int telephone,
-			String rue, int codePostal, String ville, String motDePasse, Integer credit, boolean isAdmin) {
+	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
+			String rue, String codePostal, String ville, String motDePasse, Integer credit, boolean isAdmin) {
 		this.noUtilisateur = noUtilisateur;
 		this.pseudo = pseudo;
 		this.nom = nom;
@@ -79,8 +92,8 @@ public class Utilisateur implements UserDetails {
 	}
 	
 	
-	public Utilisateur(String pseudo, String nom, String prenom, String email, int telephone, String rue,
-			int codePostal, String ville, String motDePasse, boolean isAdmin) {
+	public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone, String rue,
+			String codePostal, String ville, String motDePasse, boolean isAdmin) {
 		super();
 		this.pseudo = pseudo;
 		this.nom = nom;
@@ -127,10 +140,10 @@ public class Utilisateur implements UserDetails {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getTelephone() {
+	public String getTelephone() {
 		return telephone;
 	}
-	public void setTelephone(int telephone) {
+	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
 	public String getRue() {
@@ -139,10 +152,10 @@ public class Utilisateur implements UserDetails {
 	public void setRue(String rue) {
 		this.rue = rue;
 	}
-	public int getCodePostal() {
+	public String getCodePostal() {
 		return codePostal;
 	}
-	public void setCodePostal(int codePostal) {
+	public void setCodePostal(String codePostal) {
 		this.codePostal = codePostal;
 	}
 	public String getVille() {
