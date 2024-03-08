@@ -1,5 +1,7 @@
 package fr.eni.bo;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -12,10 +14,10 @@ public class Article {
 	String nomArticle;
 	String description;
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
-	private Date debutEncheres;
+	private LocalDate debutEncheres;
 
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
-	private Date finEncheres;
+	private LocalDate finEncheres;
 	int miseAPrix;
 	int prixVente;
 	String etatVente = "pas en vente";
@@ -39,7 +41,7 @@ public class Article {
 		super();
 	}
 
-	public Article(String nomArticle, String description, Date debutEncheres, Date finEncheres,
+	public Article(String nomArticle, String description, LocalDate debutEncheres, LocalDate finEncheres,
 			int miseAPrix, int prixVente, int idUtilisateur, int idCategorie, String etatVente) {
 
 		super();
@@ -56,7 +58,7 @@ public class Article {
 
 
 	//****Constructeur sans id  
-	public Article(String nomArticle, String description, Date debutEncheres, Date finEncheres,
+	public Article(String nomArticle, String description, LocalDate debutEncheres, LocalDate finEncheres,
 			int miseAPrix, int prixVente, String etatVente, List<Enchere> encheres, int idUtilisateur) {
 		this.nomArticle = nomArticle;
 		this.description = description;
@@ -70,8 +72,8 @@ public class Article {
 	}
 	
 	//****Constructeur plein
-	public Article(int noArticle, String nomArticle, String description, Date debutEncheres,
-			Date finEncheres, int miseAPrix, int prixVente, String etatVente, List<Enchere> encheres,
+	public Article(int noArticle, String nomArticle, String description, LocalDate debutEncheres,
+			LocalDate finEncheres, int miseAPrix, int prixVente, String etatVente, List<Enchere> encheres,
 			int idUtilisateur) {
 		this.noArticle = noArticle;
 		this.nomArticle = nomArticle;
@@ -86,7 +88,7 @@ public class Article {
 	}
 
 	// ****Constructeur plein
-	public Article(int noArticle, String nomArticle, String description, Date debutEncheres, Date finEncheres,
+	public Article(int noArticle, String nomArticle, String description, LocalDate debutEncheres, LocalDate finEncheres,
 			int miseAPrix, int prixVente, String etatVente, int idCategorie, List<Enchere> encheres, int idUtilisateur) {
 
 		this.noArticle = noArticle;
@@ -102,7 +104,7 @@ public class Article {
 		this.idUtilisateur = idUtilisateur;
 	}
 
-	public Article(int noArticle, String nomArticle, String description, Date debutEncheres, Date finEncheres,
+	public Article(int noArticle, String nomArticle, String description, LocalDate debutEncheres, LocalDate finEncheres,
 			int miseAPrix, int prixVente, String etatVente, int idCategorie, List<Enchere> encheres, Retrait retrait,
 			int idUtilisateur) {
 		this.noArticle = noArticle;
@@ -145,19 +147,19 @@ public class Article {
 		this.description = description;
 	}
 
-	public Date getDebutEncheres() {
+	public LocalDate getDebutEncheres() {
 		return debutEncheres;
 	}
 
-	public void setDebutEncheres(Date debutEncheres) {
+	public void setDebutEncheres(LocalDate debutEncheres) {
 		this.debutEncheres = debutEncheres;
 	}
 
-	public Date getFinEncheres() {
+	public LocalDate getFinEncheres() {
 		return finEncheres;
 	}
 
-	public void setFinEncheres(Date finEncheres) {
+	public void setFinEncheres(LocalDate finEncheres) {
 		this.finEncheres = finEncheres;
 	}
 

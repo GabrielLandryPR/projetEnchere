@@ -50,7 +50,7 @@ public class EnchereRepositoryImplTest {
 	@Test
 	@DisplayName("Test du saveEnchere")
 	void testSaveEnchere() {
-		Enchere enchere = new Enchere(1, 1,Date.valueOf("2024-04-04"), 10);
+		Enchere enchere = new Enchere(1, 1, 10);
 		System.out.println("apres"+enchere);
 		enchereRepository.SaveEnchere(enchere);
 	}

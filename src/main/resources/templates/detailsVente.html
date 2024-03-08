@@ -26,30 +26,32 @@
 		<h1 style="text-align: center;">Detail vente</h1>
 		<main class="center-main">
 			<ul class="flex-outer">
-				<li><label for="nomArticle">nom</label><input id="nomArticle" type="text" th:value="${a.nomArticle}" />
+				<li><span th:text="${a.nomArticle}"></span>
 				</li>
-				<li><label for="description">Description</label>
-					<textarea id="idSynopsis" cols="60" rows="3" th:text="${a.description}"></textarea>
-				</li>
-				<li><label for="categorie">Categorie</label><input id="categorie" type="text"
-						th:value="${a.libelleCategorie}" /></li>
-				<li><label for="prixVente">prixVente</label><input id="prixVente" type="text"
-						th:value="${a.prixVente}" /></li>
-				<li><label for="miseAPrix">miseAPrix</label><input id="miseAPrix" type="text"
-						th:value="${a.miseAPrix}" /></li>
+				<li><textarea id="idSynopsis" cols="60" rows="3" th:text="${a.description}"></textarea></li>
+				<li><span id="categorie" type="text" th:text="${a.libelleCategorie}"></span></li>
+				<li><label for="prixVente">Prix actuel : </label><span id="prixVente" type="text" th:text="${a.prixVente}"></span></li>
+				<li><label for="miseAPrix">Mise à prix : </label><span id="miseAPrix" type="text" th:text="${a.miseAPrix}"></span></li>
 				<li th:if="${a.finEncheres != null}">
-					<label for="finEncheres">finEncheres</label>
-					<input id="finEncheres" type="text" th:value="${a.finEncheres}" />
+					<span id="finEncheres" type="text" th:text="${a.finEncheres}"></span>
 				</li>
 				<li th:if="${a.retrait != null}">
-					<label for="retrait">Retrait</label>
-					<input id="retrait" type="text" th:value="${a.retrait}" />
+					<span id="retrait" type="text" th:text="${a.retrait}"></span>
 				</li>
-				<!--  MANQUE REDIRECTION VERS LISTE UTILISATEUR DETAIL ///// ET FORMULAIRE "MA PROPOSITION" -->
-				<li><label for="vendeur">Vendeur</label><p class="row" id="vendeur" type="text"  th:text="${a.pseudoUtilisateur}"></p></li>
+				<li><a th:href="@{/listeUtilisateurs/detail(noUtilisateur=${a.idUtilisateur})}"><span class="row" type="text"  th:text="${a.pseudoUtilisateur}"></span></a></li>
+			
+			
+			
+			<!--  FORMULAIRE "MA PROPOSITION" -->
+			<form action="/maProposition" method="post" th:object="${a}">
+				<input type="hidden" name="noArticle" th:value="${a.noArticle}"/>
+				<li><label for="prixVente">Ma proposition</label><input name="prixVente" type="number" step="10" th:field="${a.prixVente}"/></li> 
+				<li><button type="submit">Enchérir</button>
+				<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+				</li>
+			</form>
 			</ul>
 		</main>
-
 	</div>
 </body>
 

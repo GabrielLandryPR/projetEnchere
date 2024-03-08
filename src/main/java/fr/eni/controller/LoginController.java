@@ -4,12 +4,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
 import fr.eni.bll.UtilisateurService;
-import fr.eni.bo.Utilisateur;
 import fr.eni.securingWeb.EnchereUserDetailService;
 import jakarta.validation.Valid;
 @Controller

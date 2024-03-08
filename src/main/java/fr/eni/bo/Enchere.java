@@ -1,6 +1,7 @@
 package fr.eni.bo;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 
@@ -8,7 +9,7 @@ public class Enchere {
 	
 	
 	//****Variable
-	Date dateEnchere;
+	LocalDate dateEnchere;
 	int montant_enchere;
 	int idEnchere;
 	
@@ -25,26 +26,34 @@ public class Enchere {
 	
 	
 	//Constructeurs
-	public Enchere(Date dateEnchere, int montant_enchere) {
+	public Enchere(LocalDate dateEnchere, int montant_enchere) {
 		this.dateEnchere = dateEnchere;
 		this.montant_enchere = montant_enchere;
 	}
 
 	//Constructeurs plein
-	public Enchere(int utilisateur,int article, Date dateEnchere, int montant_enchere) {
-		this.dateEnchere = dateEnchere;
+	public Enchere(int utilisateur,int article, LocalDate dateEnchere, int montant_enchere) {
 		this.montant_enchere = montant_enchere;
 		this.idArticle = article;
 		this.idUtilisateur = utilisateur;
 	}
+	
 
 
-	public Date getDateEnchere() {
+	public Enchere(int montant_enchere, int idArticle, int idUtilisateur) {
+		this.montant_enchere = montant_enchere;
+		this.idArticle = idArticle;
+		this.idUtilisateur = idUtilisateur;
+		this.dateEnchere = LocalDate.now();
+	}
+
+
+	public LocalDate getDateEnchere() {
 		return dateEnchere;
 	}
 
 
-	public void setDateEnchere(Date dateEnchere) {
+	public void setDateEnchere(LocalDate dateEnchere) {
 		this.dateEnchere = dateEnchere;
 	}
 
@@ -74,15 +83,10 @@ public class Enchere {
 	}
 
 
-	public void setIdUtilisateur(int utilisateur) {
-		this.idUtilisateur = utilisateur;
-	}
-
-
-	public void setIdUtilisateur(Optional<Utilisateur> findUserById) {
+	public void setIdUtilisateur(int idUtilisateur) {
 		this.idUtilisateur = idUtilisateur;
-		
 	}
+
 
 	public int getIdEnchere() {
 		return idEnchere;
@@ -96,7 +100,7 @@ public class Enchere {
 
 	@Override
 	public String toString() {
-		return "Enchere [dateEnchere=" + dateEnchere + ", montant_enchere=" + montant_enchere + ", idEnchere="
+		return "Enchere [LocalDateEnchere=" + dateEnchere + ", montant_enchere=" + montant_enchere + ", idEnchere="
 				+ idEnchere + ", idArticle=" + idArticle + ", idUtilisateur=" + idUtilisateur + "]";
 	}
 
